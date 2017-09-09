@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dbupdate>
+    <update version="1" type="sql">
+        <![CDATA[CREATE TABLE IF NOT EXISTS allowed_program_of_study (
+	  id INT NOT NULL AUTO_INCREMENT,
+          program_id INT NOT NULL,
+	  program_of_study_id INT NOT NULL,
+	  remakrs VARCHAR(45) NULL,
+	  PRIMARY KEY (id),
+	  INDEX fk_allowed_program_of_study_program1_idx (program_id ASC),
+	  INDEX fk_allowed_program_of_study_program_of_study1_idx (program_of_study_id ASC),
+	  CONSTRAINT fk_allowed_program_of_study_program1
+		FOREIGN KEY (program_id)
+		REFERENCES program (program_id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION,
+	  CONSTRAINT fk_allowed_program_of_study_program_of_study1
+		FOREIGN KEY (program_of_study_id)
+		REFERENCES program_of_study (program_of_study_id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION)]]>
+    </update>
+    <update version="2" type="view-create">
+        <![CDATA[CANDIDATE_DETAIL_CHECKER_VIEW]]>
+    </update>
+    <update version="3" type="view-create">
+        <![CDATA[CANDIDATE_CHOICES_CHECKER_VIEW]]>
+    </update>
+    <update version="4" type="sql">
+        <![CDATA[ALTER TABLE credential_details MODIFY COLUMN `total_marks` FLOAT DEFAULT NULL]]>
+    </update>
+    <update version="5" type="sql">
+        <![CDATA[ALTER TABLE credential_details MODIFY COLUMN `total_marks` INT(11) DEFAULT NULL, MODIFY COLUMN `marks_obtained` FLOAT DEFAULT NULL]]>
+    </update>
+    <update version="10" type="view-drop-create">
+        <![CDATA[CANDIDATE_DETAIL_CHECKER_VIEW]]>
+    </update>
+    <update version="15" type="view-drop-create">
+        <![CDATA[CANDIDATE_CHOICES_CHECKER_VIEW]]>
+    </update>
+    <update version="20" type="sql">
+        <![CDATA[ALTER TABLE yog_user MODIFY COLUMN USERNAME VARCHAR(45) BINARY CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL]]>
+    </update>
+    <update version="25" type="view-drop-create">
+        <![CDATA[CANDIDATE_DETAIL_CHECKER_VIEW]]>
+    </update>
+    <update version="26" type="sql">
+        <![CDATA[ALTER TABLE prerequisite ADD COLUMN percentage FLOAT NOT NULL AFTER program_subject_id]]>
+    </update>
+    <update version="27" type="sql">
+        <![CDATA[ALTER TABLE admission_list_details ADD COLUMN sel_cat INT(11) NOT NULL DEFAULT 0 AFTER roll_no]]>
+    </update>
+    <update version="28" type="sql">
+        <![CDATA[ALTER TABLE part_registry DROP COLUMN fee_id,
+                 DROP INDEX fk_part_registry_fee1_idx,
+                 DROP FOREIGN KEY fk_part_registry_fee1]]>
+    </update>
+    <update version="29" type="sql">
+        <![CDATA[DROP TABLE fee]]>
+    </update>
+    <update version="30" type="sql">
+        <![CDATA[CREATE TABLE IF NOT EXISTS YOG_FEE_CATEGORY (
+	  ID INT NOT NULL AUTO_INCREMENT,
+	  SHIFT INT NOT NULL,
+	  NAME VARCHAR(45) NOT NULL,
+	  PROGRAM_TYPE INT NOT NULL COMMENT 'In PROGRAM_TYPE there will enum value stored its not connected with PROGRAM_TYPE  table',
+	  CATEGORY_TYPE INT NOT NULL,
+	  CODE INT NOT NULL,
+	  DISPLAY_ORDER INT NOT NULL,
+	  REMARKS VARCHAR(45) NULL,
+	  PRIMARY KEY (ID))
+	ENGINE = InnoDB;]]>
+    </update>
+    <update version="31" type="sql">
+        <![CDATA[CREATE TABLE IF NOT EXISTS YOG_FEE_MODEL (
+	  ID INT NOT NULL AUTO_INCREMENT,
+	  PROGRAM_TYPE INT NOT NULL,
+	  SHIFT INT NOT NULL,
+	  NAME VARCHAR(255) NULL,
+	  AMOUNT_TYPE INT NOT NULL,
+	  REMARKS VARCHAR(255) NULL,
+	  PRIMARY KEY (ID))
+	ENGINE = InnoDB;]]>
+    </update>
+    <update version="32" type="sql">
+        <![CDATA[CREATE TABLE IF NOT EXISTS YOG_MODEL_MAPPING (
+	  ID INT NOT NULL AUTO_INCREMENT,
+	  FEE_MODEL_ID INT NOT NULL,
+	  MODEL_NAME VARCHAR(255) NULL,
+	  MODEL_ID INT NULL,
+	  REMARKS VARCHAR(45) NULL,
+	  PRIMARY KEY (ID),
+	  INDEX fk_MODEL_MAPPING_FEE_MODEL_idx (FEE_MODEL_ID ASC),
+	  CONSTRAINT fk_MODEL_MAPPING_FEE_MODEL
+		FOREIGN KEY (FEE_MODEL_ID)
+		REFERENCES YOG_FEE_MODEL (ID)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION)
+	ENGINE = InnoDB;]]>
+    </update>
+    <update version="33" type="sql">
+        <![CDATA[CREATE TABLE IF NOT EXISTS YOG_FEE (
+	  ID INT NOT NULL AUTO_INCREMENT,
+	  ADMISSION_YEAR_ID INT NOT NULL,
+	  FEE_CATEGORY_ID INT NOT NULL,
+	  FEE_MODEL_ID INT NOT NULL,
+	  AMOUNT BIGINT NOT NULL,
+	  REMARKS VARCHAR(45) NULL,
+	  PRIMARY KEY (ID),
+	  INDEX fk_FEE_FEE_CATEGORY1_idx (FEE_CATEGORY_ID ASC),
+	  INDEX fk_FEE_FEE_MODEL1_idx (FEE_MODEL_ID ASC),
+	  CONSTRAINT fk_FEE_FEE_CATEGORY1
+		FOREIGN KEY (FEE_CATEGORY_ID)
+		REFERENCES YOG_FEE_CATEGORY (ID)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION,
+	  CONSTRAINT fk_FEE_FEE_MODEL1
+		FOREIGN KEY (FEE_MODEL_ID)
+		REFERENCES YOG_FEE_MODEL (ID)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION)
+	ENGINE = InnoDB;]]>
+    </update>
+    <update version="34" type="sql">
+        <![CDATA[CREATE TABLE IF NOT EXISTS YOG_ADDITIONAL_FEE (
+	  ID INT NOT NULL AUTO_INCREMENT,
+	  ADMISSION_YEAR_ID INT NOT NULL,
+	  FEE_OF INT NULL,
+	  FEE BIGINT NULL,
+	  REMARKS TEXT NULL,
+	  PRIMARY KEY (ID))
+	ENGINE = InnoDB;]]>
+    </update>
+    <update version="35" type="view-create">
+        <![CDATA[YOGV_SELECTION_LIST]]>
+    </update>
+    <update version="36" type="sql">
+        <![CDATA[ALTER TABLE part CHANGE COLUMN is_multiple part_no INT(11) DEFAULT 0;]]>
+    </update>
+    <update version="37" type="sql">
+        <![CDATA[CREATE TABLE IF NOT EXISTS `YOG_TEMP_CHALLAN` (
+	  `ID` BIGINT NOT NULL,
+	  `ADMISSION_LIST_DETAILS_ID` INT NOT NULL,
+	  `PART_ID` INT NOT NULL,
+	  `CODE` VARCHAR(32) NULL,
+	  `VALID_FROM` BIGINT NULL,
+	  `VALID_TO` BIGINT NULL,
+	  `STATUS` TINYINT(1) NULL DEFAULT 0,
+	  `REMARKS` VARCHAR(45) NULL,
+	  PRIMARY KEY (`ID`),
+	  UNIQUE INDEX `key_UNIQUE` (`CODE` ASC))
+	ENGINE = InnoDB;]]>
+    </update>
+    <update version="38" type="sql">
+        <![CDATA[ALTER TABLE `issuer` ADD COLUMN `is_jurisdiction` TINYINT(1) DEFAULT 0 AFTER `code`]]>
+    </update>
+    <update version="39" type="view-create">
+        <![CDATA[YOGV_CANDIDATE_ADMISSION_DETAIL]]>
+    </update>
+    <update version="40" type="sql">
+        <![CDATA[ALTER TABLE `yog_temp_challan` MODIFY COLUMN `ID` BIGINT(20) NOT NULL AUTO_INCREMENT;]]>
+    </update>
+    <update version="41" type="sql">
+        <![CDATA[ALTER TABLE `yog_fee_model` ADD COLUMN `CATEGORY_TYPE` INT(1) DEFAULT 0 AFTER `SHIFT`;]]>
+    </update>
+</dbupdate>

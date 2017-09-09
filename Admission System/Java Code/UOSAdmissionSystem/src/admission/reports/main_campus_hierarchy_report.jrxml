@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Hierarchy" language="groovy" pageWidth="612" pageHeight="792" columnWidth="592" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" uuid="573fad58-1814-49ce-8102-8644cbcb7dd9">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="103"/>
+	<subDataset name="dataset1" uuid="1da7a515-3289-4f58-8c98-05e1ab9b6220">
+		<field name="dept" class="admission.model.Department">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="dataset2" uuid="1da7a515-3289-4f58-8c98-05e1ab9b6220">
+		<field name="discipline" class="admission.model.Discipline">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="dataset3" uuid="1da7a515-3289-4f58-8c98-05e1ab9b6220">
+		<field name="pos" class="admission.model.ProgramOfStudy">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="header" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="footer" class="java.lang.String"/>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[name]]></fieldDescription>
+	</field>
+	<field name="departments" class="java.util.Collection"/>
+	<title>
+		<band height="46" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="5856202b-f11f-40d3-a0bd-0a0e27a3e295" x="0" y="0" width="592" height="24"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[University Of Sindh, Jamshoro]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e4f82619-a382-446c-b13f-dea48781a723" x="0" y="24" width="592" height="21"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="18" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{header}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="86" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="0a0977fb-5aa2-49c3-a56a-409d9cc9b409" x="0" y="8" width="43" height="14"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Faculty:]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement uuid="519d61c7-1744-40f5-907b-e1dffa179248" x="0" y="19" width="592" height="67"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="dataset1" uuid="786221a2-fe77-45e8-b3cb-18d280cc98de">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{departments})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="67" width="592">
+						<staticText>
+							<reportElement uuid="8ba1b1ac-7f0e-4c57-b3f1-0f5f71c05d38" x="0" y="3" width="68" height="14"/>
+							<textElement>
+								<font fontName="Times New Roman" size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[Department:]]></text>
+						</staticText>
+						<textField>
+							<reportElement uuid="08b8723e-2895-482c-a1fd-0d0c7f8e31b3" x="73" y="2" width="360" height="15"/>
+							<textElement>
+								<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{dept}.getName()]]></textFieldExpression>
+						</textField>
+						<componentElement>
+							<reportElement uuid="519d61c7-1744-40f5-907b-e1dffa179248" x="0" y="17" width="592" height="50"/>
+							<jr:list printOrder="Vertical">
+								<datasetRun subDataset="dataset2" uuid="786221a2-fe77-45e8-b3cb-18d280cc98de">
+									<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{dept}.getDisciplines())]]></dataSourceExpression>
+								</datasetRun>
+								<jr:listContents height="50" width="592">
+									<staticText>
+										<reportElement uuid="922dc1a1-a127-46b9-b1f7-eab56fbfaa22" x="0" y="0" width="68" height="14"/>
+										<textElement>
+											<font fontName="Times New Roman" size="12" isBold="true"/>
+										</textElement>
+										<text><![CDATA[Discipline:]]></text>
+									</staticText>
+									<textField>
+										<reportElement uuid="08b8723e-2895-482c-a1fd-0d0c7f8e31b3" x="73" y="0" width="360" height="15"/>
+										<textElement>
+											<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{discipline}.getName()]]></textFieldExpression>
+									</textField>
+									<rectangle>
+										<reportElement uuid="1f2d49a2-4b10-46f8-9a3e-b145ec0bc891" mode="Transparent" x="0" y="15" width="592" height="20"/>
+									</rectangle>
+									<staticText>
+										<reportElement uuid="922dc1a1-a127-46b9-b1f7-eab56fbfaa22" x="0" y="18" width="100" height="14"/>
+										<textElement>
+											<font fontName="Times New Roman" size="12" isBold="true"/>
+										</textElement>
+										<text><![CDATA[Program of Study]]></text>
+									</staticText>
+									<componentElement>
+										<reportElement uuid="519d61c7-1744-40f5-907b-e1dffa179248" x="0" y="35" width="592" height="15"/>
+										<jr:list printOrder="Vertical">
+											<datasetRun subDataset="dataset3" uuid="786221a2-fe77-45e8-b3cb-18d280cc98de">
+												<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{discipline}.getProgramOfStudies())]]></dataSourceExpression>
+											</datasetRun>
+											<jr:listContents height="15" width="592">
+												<textField>
+													<reportElement uuid="08b8723e-2895-482c-a1fd-0d0c7f8e31b3" x="0" y="0" width="592" height="15"/>
+													<textElement>
+														<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+													</textElement>
+													<textFieldExpression><![CDATA[$F{pos}.getName()]]></textFieldExpression>
+												</textField>
+												<rectangle>
+													<reportElement uuid="1f2d49a2-4b10-46f8-9a3e-b145ec0bc891" mode="Transparent" x="0" y="0" width="592" height="15"/>
+												</rectangle>
+											</jr:listContents>
+										</jr:list>
+									</componentElement>
+								</jr:listContents>
+							</jr:list>
+						</componentElement>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<textField>
+				<reportElement uuid="55803f16-56da-4caa-bb32-9c73b15716fe" x="73" y="7" width="360" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

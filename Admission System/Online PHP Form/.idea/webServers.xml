@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="7d026924-effe-486c-bbac-25e4e4564eb3" name="admission-usindh-edu-pk" url="http://usindh.edu.pk">
+        <fileTransfer host="usindh.edu.pk" port="21" accessType="FTPS" password="df8cdfc8dfc2df8bdf89dfeedf80df9fdf9edfeddfe1df80df8c" username="rajakumar@admission.usindh.edu.pk">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

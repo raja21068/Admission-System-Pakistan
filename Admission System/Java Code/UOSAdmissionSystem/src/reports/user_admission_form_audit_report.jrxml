@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="User Admission Form Audit Report" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ed8690c1-60c6-41e3-a60b-0700a5911a14">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="PRINTED_BY" class="java.lang.String"/>
+	<parameter name="DATE_FROM" class="java.lang.String"/>
+	<parameter name="DATE_TO" class="java.lang.String"/>
+	<parameter name="PROGRAM_TYPE_YEAR" class="java.lang.String"/>
+	<parameter name="REPORT_OF" class="java.lang.String"/>
+	<field name="userName" class="java.lang.String"/>
+	<field name="totalFormEntry" class="java.lang.Integer"/>
+	<variable name="TOTAL_COUNT" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalFormEntry}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="143" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="236f94f4-9040-4d52-9222-2a5c9ea66ea8" x="0" y="0" width="555" height="30"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[University of Sindh, Jamshoro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="42b256c9-1c30-43c7-be9e-30277dff7887" x="0" y="32" width="555" height="18"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[User Admission Form Audit Report]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="63ee0ff2-74e2-42ed-adda-d0c477dca63b" x="312" y="80" width="66" height="16"/>
+				<textElement textAlignment="Left">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATE_TO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3307d668-05b9-4a3b-ac62-b30dfdcdf2a7" x="213" y="80" width="66" height="16"/>
+				<textElement textAlignment="Left">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATE_FROM}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8501a4b8-1a33-464a-9dd5-74bb228fbb22" x="177" y="80" width="36" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[From:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="07628158-c2ff-4b7e-ab70-20899124a000" x="287" y="80" width="22" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[To:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="93fcdcfb-866c-4727-9c6f-1d7bf4ea17fe" x="0" y="54" width="555" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PROGRAM_TYPE_YEAR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="854f2035-3817-454b-b1e5-07e83ccc652f" x="134" y="126" width="80" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[User Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c72f2397-e36c-4a4e-8802-512239379bd0" x="357" y="126" width="98" height="16"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Form]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="b5b8fe69-86b5-4661-b3f3-96e92e39ce85" x="91" y="124" width="364" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="1e16eb18-e69c-4a7e-8fa5-7675825a14f4" x="91" y="126" width="29" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SNo.]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="ad4e468d-77b1-4d81-9861-25a79d2fa71a" x="91" y="142" width="364" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="1e026c23-5b1c-42b3-abea-7f338178e345" x="0" y="99" width="555" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORT_OF}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="2a44d14a-9446-4994-92d4-bfbc4f4047e9" x="134" y="4" width="211" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{userName}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement uuid="5708fee5-5917-4eca-a836-af39e0451332" mode="Transparent" x="357" y="4" width="98" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalFormEntry}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7836625c-ddd4-4654-aaf4-919b8ce9176d" x="91" y="4" width="29" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="83" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="5d20a4b9-c187-4307-a823-622636f69433" x="0" y="35" width="60" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Printed By:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="7ccd236c-9c84-40dc-a0e3-10ac3101eb7e" x="66" y="35" width="199" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PRINTED_BY}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e6c20f8c-70d1-4ba9-8255-c07473d20df1" x="0" y="51" width="60" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="1e3c5ec3-1e07-4a20-b4aa-40f262a36eb8" x="433" y="51" width="80" height="16"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="c5b23c16-2eb4-45d5-bbe2-7223d8e566f3" x="513" y="51" width="40" height="16"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy" isBlankWhenNull="false">
+				<reportElement uuid="7594d695-18f2-484a-8a37-c2c45b10d859" mode="Transparent" x="66" y="51" width="199" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="68e962af-65e4-44aa-9fe4-952ba0f51650" x="91" y="1" width="364" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="490b34ca-6ac6-4933-8673-d0e79ee02354" x="91" y="2" width="53" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement uuid="599c1e71-d6c3-41f8-98ff-b57d47c0c755" mode="Transparent" x="357" y="2" width="98" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TOTAL_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

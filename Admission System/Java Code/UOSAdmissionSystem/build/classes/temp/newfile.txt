@@ -1,0 +1,155 @@
+
+            List cs = ((JCheckBoxList) campusList).getCheckedItems();
+            Set ccs = candidate.getAppliedCampuses();
+            if (cs.size() == ccs.size()) {
+                int i = 0;
+                Iterator it = ccs.iterator();
+                while (it.hasNext()) {
+                    AppliedCampus ac = (AppliedCampus) it.next();
+                    JCheckBoxListItem object = (JCheckBoxListItem) cs.get(i++);
+                    Campus c = (Campus) object.getValue();
+                    ac.setCampus(c);
+                    DatabaseManager.updateData(ac);
+                }
+            } else if (ccs.size() > cs.size()) {
+                int i = 0;
+                Iterator it = ccs.iterator();
+                while (it.hasNext()) {
+                    AppliedCampus ac = (AppliedCampus) it.next();
+                    if (i != cs.size()) {
+                        JCheckBoxListItem object = (JCheckBoxListItem) cs.get(i++);
+                        Campus c = (Campus) object.getValue();
+                        ac.setCampus(c);
+                        DatabaseManager.updateData(ac);
+                    } else {
+                        DatabaseManager.deleteData(AppliedCampus.class.getName(), "appliedCampusId=" + ac.getAppliedCampusId());
+                    }
+                }
+            } else if (ccs.size() < cs.size()) {
+                int i = 0;
+                Iterator it = ccs.iterator();
+                while (it.hasNext()) {
+                    AppliedCampus ac = (AppliedCampus) it.next();
+                    JCheckBoxListItem object = (JCheckBoxListItem) cs.get(i++);
+                    Campus c = (Campus) object.getValue();
+                    ac.setCampus(c);
+                    DatabaseManager.updateData(ac);
+                }
+                for (int j = i; j < cs.size(); j++) {
+                    JCheckBoxListItem object = (JCheckBoxListItem) cs.get(j);
+                    Campus c = (Campus) object.getValue();
+                    AppliedCampus ac = new AppliedCampus(candidate, c, "");
+                    DatabaseManager.addData(ac);
+                }
+            }
+
+            List<CategoryEnum> sc = this.getSelectedCategories();
+            Set cac = candidate.getAppliedCategories();
+            if (sc.size() == cac.size()) {
+//                int i = 0;
+//                Iterator it = cac.iterator();
+//                while(it.hasNext()){
+//                    AppliedCategory ac = (AppliedCategory) it.next();
+//                    String code = sc.get(i++);
+//                    String args[] = code.split(" ");
+//                    String arg1 = args[0];
+//                    String arg2 = args.length > 1 ? args[1] : "";
+//
+//                    ac.setCategoryCode(arg1);
+//                    ac.setRemarks(arg2);
+//                    DatabaseManager.updateData(ac);
+//                }
+            } else if (cac.size() > sc.size()) {
+//                int i = 0;
+//                Iterator it = cac.iterator();
+//                while(it.hasNext()){
+//                    AppliedCategory ac = (AppliedCategory) it.next();
+//                    if(i != sc.size()){
+//                        String code = sc.get(i++);
+//                        String args[] = code.split(" ");
+//                        String arg1 = args[0];
+//                        String arg2 = args.length > 1 ? args[1] : "";
+//                        ac.setCategoryCode(arg1);
+//                        ac.setRemarks(arg2);
+//                        DatabaseManager.updateData(ac);
+//                    }else{
+//                        DatabaseManager.deleteData(AppliedCategory.class.getName(), "appliedCategoryId=" + ac.getAppliedCategoryId());
+//                    }
+//                }
+            } else if (cac.size() < sc.size()) {
+//                int i = 0;
+//                Iterator it = cac.iterator();
+//                while(it.hasNext()){
+//                    AppliedCategory ac = (AppliedCategory) it.next();
+//                    String code = sc.get(i++);
+//                    String args[] = code.split(" ");
+//                    String arg1 = args[0];
+//                    String arg2 = args.length > 1 ? args[1] : "";
+//                    ac.setCategoryCode(arg1);
+//                    ac.setRemarks(arg2);
+//                    //                    ac.setCategoryCode(code);
+//                    DatabaseManager.updateData(ac);
+//                }
+//                for (int j = i; j < sc.size(); j++) {
+//                    String code = sc.get(j);
+//                    String args[] = code.split(" ");
+//                    String arg1 = args[0];
+//                    String arg2 = args.length > 1 ? args[1] : "";
+//                    AppliedCategory ac = new AppliedCategory(candidate, arg1, arg2);
+//                    DatabaseManager.addData(ac);
+//                }
+            }
+
+
+================================================================================
+if (set.size() == cposList.size()) {
+                    int i = 0;
+                    Iterator it = set.iterator();
+                    while (it.hasNext()) {
+                        CandidateProgramOfStudy cmpos1 = (CandidateProgramOfStudy) it.next();
+                        CandidateProgramOfStudy cmpos2 = cposList.get(i++);
+                        cmpos1.setCampusProgramOfStudy(cmpos2.getCampusProgramOfStudy());
+                        cmpos1.setChoiceNo(cmpos2.getChoiceNo());
+                        DatabaseManager.updateData(cmpos1);
+                    }
+                } else if (set.size() > cposList.size()) {
+                    int i = 0;
+                    Iterator it = set.iterator();
+                    while (it.hasNext()) {
+                        CandidateProgramOfStudy cmpos1 = (CandidateProgramOfStudy) it.next();
+                        if (i != cposList.size()) {
+                            CandidateProgramOfStudy cmpos2 = cposList.get(i++);
+                            cmpos1.setCampusProgramOfStudy(cmpos2.getCampusProgramOfStudy());
+                            cmpos1.setChoiceNo(cmpos2.getChoiceNo());
+                            DatabaseManager.updateData(cmpos1);
+                        } else {
+                            DatabaseManager.deleteData(CandidateProgramOfStudy.class.getName(), "candidateProgramOfStudyId=" + cmpos1.getCandidateProgramOfStudyId());
+                        }
+                    }
+                } else if (set.size() < cposList.size()) {
+                    int i = 0;
+                    Iterator it = set.iterator();
+                    while (it.hasNext()) {
+                        CandidateProgramOfStudy cmpos1 = (CandidateProgramOfStudy) it.next();
+                        CandidateProgramOfStudy cmpos2 = cposList.get(i++);
+                        cmpos1.setCampusProgramOfStudy(cmpos2.getCampusProgramOfStudy());
+                        cmpos1.setChoiceNo(cmpos2.getChoiceNo());
+                        DatabaseManager.updateData(cmpos1);
+                    }
+                    for (int j = i; j < cposList.size(); j++) {
+                        CandidateProgramOfStudy cmpos = cposList.get(j);
+                        cmpos.setCandidate(candidate);
+                        DatabaseManager.addData(cmpos);
+                    }
+                }
+
+                //                Iterator it = set.iterator();
+                //                while(it.hasNext()){
+                //                    CandidateProgramOfStudy cnpos = (CandidateProgramOfStudy) it.next();
+                //                    DatabaseManager.deleteData(CandidateProgramOfStudy.class.getName(), "candidateProgramOfStudyId=" + cnpos.getCandidateProgramOfStudyId());
+                //                }
+                //                List<CampusProgramOfStudy> appliedCampusList = this.programOfStudyChoicesDialog.getAppliedCampusDisciplineList();
+                //                for (int i = 0; i < cposList.size(); i++) {
+                //                    CampusProgramOfStudy campusProgramOfStudy = cposList.get(i);
+                //                    DatabaseManager.addData(new CandidateProgramOfStudy(campusProgramOfStudy, candidate, 0, "", null));
+                //                }

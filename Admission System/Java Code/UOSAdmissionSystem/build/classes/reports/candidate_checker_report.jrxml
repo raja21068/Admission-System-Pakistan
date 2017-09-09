@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Candidate Checker List" pageWidth="842" pageHeight="1191" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="98264ac6-4111-412a-b87d-9635010960cf">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="1da7a515-3289-4f58-8c98-05e1ab9b6220">
+		<field name="appliedCategory" class="java.lang.String">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="datasetcredential" uuid="44841236-047d-40a8-99c7-641b2529cc53">
+		<parameter name="yearDegree" class="java.lang.Integer"/>
+		<field name="detailOf" class="java.lang.String"/>
+		<field name="year" class="java.lang.Object"/>
+		<field name="tMrks" class="java.lang.Integer"/>
+		<field name="grp" class="java.lang.String"/>
+		<field name="bd" class="java.lang.String"/>
+		<field name="oMrks" class="java.lang.Object"/>
+		<field name="seatNo" class="java.lang.Integer"/>
+		<field name="field1" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="dataset2" uuid="69cf0fc3-713e-4f84-884d-0ddae33ca3e1">
+		<field name="optionName" class="java.lang.String">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="PROGRAM_TYPE_YEAR" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Yougeshwar Khatri\\Desktop\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PRINTED_BY" class="java.lang.String"/>
+	<parameter name="CHECKED_BY" class="java.lang.String"/>
+	<field name="seatNo" class="java.lang.Integer"/>
+	<field name="gender" class="java.lang.String">
+		<fieldDescription><![CDATA[gender]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[name]]></fieldDescription>
+	</field>
+	<field name="fathersName" class="java.lang.String">
+		<fieldDescription><![CDATA[fathersName]]></fieldDescription>
+	</field>
+	<field name="surname" class="java.lang.String">
+		<fieldDescription><![CDATA[surname]]></fieldDescription>
+	</field>
+	<field name="district" class="java.lang.String">
+		<fieldDescription><![CDATA[district]]></fieldDescription>
+	</field>
+	<field name="area" class="java.lang.String">
+		<fieldDescription><![CDATA[area]]></fieldDescription>
+	</field>
+	<field name="choices" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="user" class="java.lang.String"/>
+	<field name="optionalSubject" class="java.util.Collection"/>
+	<field name="chalanFee" class="java.lang.Integer"/>
+	<field name="chalanNo" class="java.lang.String"/>
+	<field name="chalanDate" class="java.lang.String"/>
+	<field name="yearsDegree" class="java.lang.Integer"/>
+	<field name="objectionRemarks" class="java.lang.String"/>
+	<field name="categoryList" class="java.util.Collection"/>
+	<field name="credentialDetails" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="47" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="1a61ddd9-c966-48c6-8d81-f26eb6bbff54" x="1" y="1" width="801" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Candidate Checker Report, University of Sindh, Jamshoro]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="d1634a61-f328-43f6-a7e2-d2a57ee58e3e" x="0" y="21" width="802" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PROGRAM_TYPE_YEAR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="77080d2e-06f6-4017-b625-7a539ee1b43d" x="701" y="1" width="100" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="d976caf5-a466-425d-8a11-46b5255ee87e" x="0" y="5" width="45" height="16"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[SEAT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c92a7054-b70d-48e2-85c9-6c1457cd64c6" x="50" y="5" width="9" height="16"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[X]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1a24c429-e2ef-429d-a9da-a1894371588e" x="65" y="5" width="45" height="16"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c8a1d1f5-6d9c-4902-9778-4cd069e049c8" x="521" y="4" width="79" height="16"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[DISTRICT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6b0a811c-c4ad-4561-a45e-0a7468f1a49b" x="627" y="5" width="21" height="16"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[U/R]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="02518e95-3066-4171-9aed-f29e87b14d02" x="227" y="5" width="100" height="16"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[FATHER'S NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="51e214b0-cab0-4d2c-b71f-a4d3a33232d0" x="657" y="5" width="71" height="16"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[CATEGORY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="013dae24-68a9-4a05-accf-9ac40f350eb3" x="392" y="5" width="74" height="16"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[SURNAME]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="57f79405-7cd8-4728-bf3a-7cd141c6a174" x="0" y="20" width="802" height="1"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="94">
+			<textField>
+				<reportElement uuid="d3a4c7ab-9b5e-403b-97d5-c2a42823401f" x="0" y="2" width="45" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{seatNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="908e1a9b-6acb-4fb4-ba97-bb552050ead9" x="50" y="2" width="9" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4426e774-6e70-467d-87cc-25898b0f9907" x="65" y="2" width="162" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="03067b22-9ead-431d-b402-785c17f0e4fb" x="227" y="2" width="165" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fathersName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7148107a-df46-4786-8cd7-d880065ab3df" x="521" y="2" width="106" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{district}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="38aca788-8d17-4cd0-870c-517680776efa" x="627" y="2" width="21" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{area}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c6e09fe8-cdc9-4f3d-8981-5ec9baf95507" x="392" y="2" width="129" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{surname}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement uuid="519d61c7-1744-40f5-907b-e1dffa179248" x="657" y="2" width="145" height="15"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Horizontal">
+					<datasetRun subDataset="dataset1" uuid="786221a2-fe77-45e8-b3cb-18d280cc98de">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{categoryList})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="15" width="30">
+						<textField>
+							<reportElement uuid="08b8723e-2895-482c-a1fd-0d0c7f8e31b3" x="0" y="0" width="30" height="15"/>
+							<textElement verticalAlignment="Middle">
+								<font fontName="SansSerif" size="10" pdfFontName="Times-Roman"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{appliedCategory}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<subreport>
+				<reportElement uuid="791ec92f-b0f5-41bc-a2fa-24a093994690" stretchType="RelativeToTallestObject" x="0" y="48" width="802" height="28" isRemoveLineWhenBlank="true"/>
+				<dataSourceExpression><![CDATA[$F{choices}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "choices_sub_report.jasper"]]></subreportExpression>
+			</subreport>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="621b2a72-6d83-44c9-9a50-cacae8f2ef4d" positionType="FixRelativeToBottom" x="702" y="79" width="88" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{user}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="1f007a20-4ca0-4246-b00d-264d82ed2a60" positionType="FixRelativeToBottom" x="0" y="93" width="801" height="1"/>
+			</line>
+			<componentElement>
+				<reportElement uuid="418d65bb-fcd4-4a0d-b50e-09262439f769" x="0" y="20" width="627" height="27"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Horizontal">
+					<datasetRun subDataset="datasetcredential" uuid="b817e7da-7c05-4ffa-9fa2-9c37506f1c9e">
+						<datasetParameter name="yearDegree">
+							<datasetParameterExpression><![CDATA[$F{yearsDegree}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[$F{credentialDetails}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="27" width="200">
+						<textField>
+							<reportElement uuid="f044e198-4e00-4c30-9329-623def1cbf14" x="0" y="0" width="30" height="13"/>
+							<textElement>
+								<font size="10" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{detailOf} + ":"]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement uuid="59450b76-1e79-467b-83d0-cb808c8555d0" x="155" y="0" width="30" height="13"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$F{bd}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement uuid="6bde99a2-27e3-411c-9ac7-1a59abcfc30c" x="119" y="0" width="35" height="13"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$F{grp}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement uuid="c40d3322-516c-4cc2-a13a-4f74ac2516ee" x="89" y="0" width="30" height="13"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$F{year}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement uuid="c148d1f6-a498-477e-a282-2e408fb130b5" x="59" y="0" width="30" height="13"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$F{tMrks}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement uuid="78b50a3c-5519-4ee6-a14a-a1d5577b4f76" x="29" y="0" width="30" height="13"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$F{detailOf}.startsWith("G")? (""+$F{oMrks}) : ""+((Float)$F{oMrks}).intValue()]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement uuid="687716e7-74fc-4fd3-ad21-eac98396c897" x="119" y="13" width="80" height="14">
+								<printWhenExpression><![CDATA[$P{yearDegree} > 0]]></printWhenExpression>
+							</reportElement>
+							<textElement/>
+							<textFieldExpression><![CDATA[$P{yearDegree} + "  Years Degree"]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement uuid="cbd568e7-7e09-4a5d-9b4c-8e148f3c994d" x="30" y="13" width="80" height="14"/>
+							<textElement/>
+							<textFieldExpression><![CDATA["S#  "+$F{seatNo}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="8c9333b5-3118-4d66-bf9d-69ff0d9879c3" x="627" y="34" width="175" height="13"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Horizontal">
+					<datasetRun subDataset="dataset2" uuid="9c3b0372-886c-40de-804b-9675e5971f6e">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{optionalSubject})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="13" width="30">
+						<textField>
+							<reportElement uuid="650af2b4-b1dc-433f-812d-d7d6a3a7b519" x="0" y="0" width="29" height="13"/>
+							<textElement verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[$F{optionName}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<staticText>
+				<reportElement uuid="de427325-5e41-4ef3-8674-8ca4ae0991e2" x="627" y="20" width="113" height="15">
+					<printWhenExpression><![CDATA[$F{optionalSubject}.size() > 0]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OPTIONAL SUBJECTS]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="01390192-970a-4d82-8734-291ab1eb7c7c" positionType="FixRelativeToBottom" x="327" y="79" width="194" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CH#: " + $F{chalanNo} + "  Date:" + $F{chalanDate} + "  Amount: " + $F{chalanFee}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0169922a-cae2-40f8-922a-38289b993f46" positionType="FixRelativeToBottom" x="0" y="79" width="308" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{objectionRemarks}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="36bf74f6-5b74-4000-a0c1-afd0a30d0400" positionType="FixRelativeToBottom" x="671" y="79" width="31" height="12"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Entry By:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="48" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2c78ab2b-0d80-4edc-b133-747d6007afa3" x="2" y="12" width="70" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Printed By:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="c41009a7-7330-4830-ad11-ef5a307b0798" x="73" y="12" width="210" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PRINTED_BY}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="7b9ee723-228d-43eb-a751-f6241599f9e3" x="521" y="26" width="86" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Checked By:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e1041929-a52b-47f9-adb8-0dac7682bf73" x="2" y="28" width="70" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="51534e78-29ce-4a90-a4fc-c45fb71d78a0" x="610" y="26" width="189" height="17"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CHECKED_BY}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="970b7377-d41a-41ca-8377-e160693db29e" x="610" y="42" width="189" height="1"/>
+			</line>
+			<textField pattern="dd-MM-yyyy" isBlankWhenNull="false">
+				<reportElement uuid="2228d847-b4e0-4b61-b37c-0dcceea63d65" mode="Transparent" x="73" y="28" width="210" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

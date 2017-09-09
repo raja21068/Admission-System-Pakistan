@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="choices_sub_report" language="groovy" pageWidth="800" pageHeight="802" columnWidth="800" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="4fc892b0-fbed-400f-b380-9013b854332c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="9b388cd3-7104-4cf2-9423-ca97b0fef974">
+		<field name="choice" class="java.lang.String">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+		<variable name="COUNTER" class="java.lang.Integer" calculation="Count">
+			<variableExpression><![CDATA[$V{COUNTER}+1]]></variableExpression>
+			<initialValueExpression><![CDATA[1]]></initialValueExpression>
+		</variable>
+	</subDataset>
+	<field name="campus" class="java.lang.String"/>
+	<field name="shift" class="java.lang.String"/>
+	<field name="choicesList" class="java.util.Collection"/>
+	<group name="campusGroup">
+		<groupExpression><![CDATA[$F{campus}]]></groupExpression>
+		<groupHeader>
+			<band height="11">
+				<textField>
+					<reportElement uuid="5f3bfe96-405f-4436-bd82-462666935004" x="0" y="-2" width="320" height="13"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{campus}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<textField>
+				<reportElement uuid="acea3074-72ec-445c-bde6-186be1937b60" x="0" y="0" width="75" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{shift} + ":"]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement uuid="79c51dc9-a45f-4b85-a4aa-a90f71a4c2c0" x="82" y="0" width="718" height="17"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Horizontal">
+					<datasetRun subDataset="dataset1" uuid="a850a20b-fb50-4506-a20b-c98b94ebc0bc">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{choicesList})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="17" width="60">
+						<textField>
+							<reportElement uuid="43501fea-0ed6-47c6-b10f-5da7329200da" x="0" y="0" width="60" height="17"/>
+							<textElement verticalAlignment="Middle">
+								<font size="12"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{COUNTER}+"."+$F{choice}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

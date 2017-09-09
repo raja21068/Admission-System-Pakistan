@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Candidate Checker List" pageWidth="1192" pageHeight="842" orientation="Landscape" columnWidth="1162" leftMargin="20" rightMargin="10" topMargin="10" bottomMargin="10" uuid="98264ac6-4111-412a-b87d-9635010960cf">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="313"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="1da7a515-3289-4f58-8c98-05e1ab9b6220">
+		<field name="appliedCategory" class="java.lang.String">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="dataset2" uuid="ec89bb47-f2d5-47b7-aff9-f4cecd4acbdc">
+		<field name="appliedCampus" class="java.lang.String">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="dataset3" uuid="7bc16614-138b-4a5a-9a9b-b8e70bde2fec">
+		<field name="cpos" class="java.lang.String">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="header" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="footer" class="java.lang.String"/>
+	<field name="seatNo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[seatNo]]></fieldDescription>
+	</field>
+	<field name="gender" class="java.lang.String">
+		<fieldDescription><![CDATA[gender]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[name]]></fieldDescription>
+	</field>
+	<field name="fathersName" class="java.lang.String">
+		<fieldDescription><![CDATA[fathersName]]></fieldDescription>
+	</field>
+	<field name="surname" class="java.lang.String">
+		<fieldDescription><![CDATA[surname]]></fieldDescription>
+	</field>
+	<field name="group" class="java.lang.String">
+		<fieldDescription><![CDATA[name]]></fieldDescription>
+	</field>
+	<field name="district" class="admission.model.District">
+		<fieldDescription><![CDATA[district]]></fieldDescription>
+	</field>
+	<field name="area" class="java.lang.String">
+		<fieldDescription><![CDATA[area]]></fieldDescription>
+	</field>
+	<field name="ssc" class="admission.model.CredentialDetails">
+		<fieldDescription><![CDATA[ssc]]></fieldDescription>
+	</field>
+	<field name="hsc" class="admission.model.CredentialDetails">
+		<fieldDescription><![CDATA[hsc]]></fieldDescription>
+	</field>
+	<field name="appliedCategories" class="java.util.Collection"/>
+	<field name="appliedCampuses" class="java.util.Collection"/>
+	<field name="candidateProgramOfStudies" class="java.util.Collection"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="30" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="8d02b51d-b2a6-4651-bcfa-17986a9bf306" x="0" y="-1" width="1162" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{header}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="31ba2e55-fa2e-4e06-ab87-8c8039e3e302" x="0" y="15" width="100" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="d976caf5-a466-425d-8a11-46b5255ee87e" x="0" y="5" width="45" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[SEAT]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="57f79405-7cd8-4728-bf3a-7cd141c6a174" x="0" y="0" width="1162" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="c92a7054-b70d-48e2-85c9-6c1457cd64c6" x="50" y="5" width="9" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[X]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1a24c429-e2ef-429d-a9da-a1894371588e" x="65" y="5" width="45" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c8a1d1f5-6d9c-4902-9778-4cd069e049c8" x="280" y="5" width="61" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[DISTRICT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6b0a811c-c4ad-4561-a45e-0a7468f1a49b" x="392" y="5" width="21" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[U/R]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="053f2266-6f7e-4f6b-8216-cf7458b6aedc" x="423" y="5" width="42" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[MMRK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8a073ed0-d940-4b0d-aab3-d99b2644c80f" x="483" y="5" width="21" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[MY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0f6204f2-7258-4995-84d5-b927d366caa9" x="528" y="5" width="40" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[MOUT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e6d68ffd-7a9d-417e-ad2b-6f4664d7b2ce" x="581" y="5" width="42" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[IMRK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="acd95bcb-9f03-408f-811f-1ec0d3f514ab" x="674" y="5" width="40" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[IOUT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0aa8425b-d744-4963-be91-7bef011e8667" x="632" y="5" width="21" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[IY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="505f37b9-4e71-4dd0-9707-9c0b4352ee37" x="731" y="5" width="61" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[HSC SEAT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="02518e95-3066-4171-9aed-f29e87b14d02" x="65" y="21" width="117" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[FATHER'S NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4ec53292-128e-4f0a-85a1-615edae1d4e7" x="877" y="5" width="15" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[C1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cafe9885-5b48-40fc-9600-cd09d453aa2e" x="902" y="5" width="15" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[C2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6bd27302-e1e8-46a6-b466-4f82ea6737be" x="927" y="5" width="15" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[C3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4b45b7d0-8338-423d-98d1-586620532017" x="952" y="5" width="15" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[C4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="58f8e6f9-3a01-4fb5-a904-42739e8923bd" x="977" y="5" width="15" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[C5]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f0be9d86-13d2-411b-bc40-720512e9a886" x="1002" y="5" width="15" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[C6]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="81773ca1-7089-487a-908e-7a3de102a5f2" x="1027" y="5" width="15" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[C7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b7b0ecce-655b-485e-8842-c9b9c624f17c" x="1052" y="5" width="15" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[C8]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="038b18b4-29e1-42e7-b8e0-f2825464fc26" x="1077" y="5" width="15" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[C9]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c5afa6e7-8632-4eba-8d45-eddc1b0a025e" x="1102" y="5" width="22" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[C10]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="51e214b0-cab0-4d2c-b71f-a4d3a33232d0" x="400" y="21" width="71" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[CATEGORY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="99ce601b-0cb4-446a-ae32-5a94ebbcfad1" x="748" y="21" width="53" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[CAMPUS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="013dae24-68a9-4a05-accf-9ac40f350eb3" x="280" y="21" width="70" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[SURNAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c54f46ee-87c9-4945-ad36-cee93411d076" x="801" y="5" width="27" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[GRP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d5c2a429-06a2-4ad8-a9f3-f66d8e821a3a" x="836" y="5" width="17" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[BD]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="33">
+			<line>
+				<reportElement uuid="1f007a20-4ca0-4246-b00d-264d82ed2a60" x="0" y="0" width="1162" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="d3a4c7ab-9b5e-403b-97d5-c2a42823401f" x="0" y="3" width="45" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{seatNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="908e1a9b-6acb-4fb4-ba97-bb552050ead9" x="50" y="3" width="9" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4426e774-6e70-467d-87cc-25898b0f9907" x="65" y="3" width="215" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="03067b22-9ead-431d-b402-785c17f0e4fb" x="65" y="18" width="215" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fathersName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c6e09fe8-cdc9-4f3d-8981-5ec9baf95507" x="280" y="18" width="120" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{surname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7148107a-df46-4786-8cd7-d880065ab3df" x="280" y="3" width="112" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{district}.getName()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="38aca788-8d17-4cd0-870c-517680776efa" x="394" y="3" width="21" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{area}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c00bdccb-5aed-4da7-8b64-c7837c783a59" x="423" y="3" width="42" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ssc}.getMarksObtained()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2cb2403d-ce05-46ef-9282-4b0d02feabf7" x="483" y="3" width="33" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ssc}.getPassingYear()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="01ba7bac-f88a-443c-9dff-7efb6b3fedf0" x="528" y="3" width="40" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ssc}.getTotalMarks()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9feac4a8-0afe-4166-90db-8d3af210f077" x="581" y="3" width="42" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hsc}.getMarksObtained()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2a35413b-541f-4af1-8d73-8d8d2f99af35" x="632" y="3" width="35" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hsc}.getPassingYear()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e9fc2ce2-268d-440a-8dbb-88ddcdf593ca" x="674" y="3" width="40" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hsc}.getTotalMarks()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="16ff89ff-6bfa-4d37-88de-235e3289c094" x="731" y="3" width="61" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hsc}.getSeatNo()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="59f74ac1-2627-4d38-9f8e-9b359971960d" x="801" y="3" width="27" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hsc}.getGroup_()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3172d5c9-83f2-442c-9c94-cc0f675ea04e" x="836" y="3" width="30" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hsc}.getIssuer().getLocation()]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement uuid="519d61c7-1744-40f5-907b-e1dffa179248" x="879" y="3" width="282" height="15"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Horizontal">
+					<datasetRun subDataset="dataset3" uuid="786221a2-fe77-45e8-b3cb-18d280cc98de">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{candidateProgramOfStudies})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="15" width="25">
+						<textField>
+							<reportElement uuid="08b8723e-2895-482c-a1fd-0d0c7f8e31b3" x="0" y="0" width="25" height="15"/>
+							<textElement>
+								<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{cpos}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="519d61c7-1744-40f5-907b-e1dffa179248" x="474" y="18" width="257" height="15"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Horizontal">
+					<datasetRun subDataset="dataset1" uuid="786221a2-fe77-45e8-b3cb-18d280cc98de">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{appliedCategories})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="15" width="257">
+						<textField>
+							<reportElement uuid="08b8723e-2895-482c-a1fd-0d0c7f8e31b3" x="0" y="0" width="30" height="15"/>
+							<textElement>
+								<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{appliedCategory}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="519d61c7-1744-40f5-907b-e1dffa179248" x="801" y="18" width="360" height="15"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Horizontal">
+					<datasetRun subDataset="dataset2" uuid="786221a2-fe77-45e8-b3cb-18d280cc98de">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{appliedCampuses})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="15" width="20">
+						<textField>
+							<reportElement uuid="08b8723e-2895-482c-a1fd-0d0c7f8e31b3" x="0" y="0" width="20" height="15"/>
+							<textElement>
+								<font fontName="Times New Roman" size="11" pdfFontName="Times-Roman"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{appliedCampus}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<staticText>
+				<reportElement uuid="b65e7c02-4a0f-4e02-a0c2-1b77fdb7636a" x="740" y="17" width="61" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[CAMPUS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6209e08e-db81-49ef-973d-d1903caa2da6" x="400" y="17" width="74" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[CATEGORY:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="79" splitType="Stretch">
+			<line>
+				<reportElement uuid="553ffa29-eb6b-41a4-97c5-ba0a08409dc7" x="0" y="0" width="1162" height="1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="6bc87aa0-aa65-4c5c-86a2-a14efca54c96" x="0" y="53" width="1162" height="16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{footer}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

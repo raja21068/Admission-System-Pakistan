@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="429d8632-ca29-472b-8cc8-dba9134865a1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="left_logo" class="java.lang.Object" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="right_logo" class="java.lang.Object" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[name]]></fieldDescription>
+	</field>
+	<field name="fathersName" class="java.lang.String">
+		<fieldDescription><![CDATA[fathersName]]></fieldDescription>
+	</field>
+	<field name="rollNo" class="java.lang.String">
+		<fieldDescription><![CDATA[rollNo]]></fieldDescription>
+	</field>
+	<field name="department" class="java.lang.String">
+		<fieldDescription><![CDATA[department]]></fieldDescription>
+	</field>
+	<field name="campus" class="java.lang.String">
+		<fieldDescription><![CDATA[campus]]></fieldDescription>
+	</field>
+	<field name="location" class="java.lang.String">
+		<fieldDescription><![CDATA[location]]></fieldDescription>
+	</field>
+	<field name="program" class="java.lang.String">
+		<fieldDescription><![CDATA[program]]></fieldDescription>
+	</field>
+	<field name="respect" class="java.lang.String">
+		<fieldDescription><![CDATA[respect]]></fieldDescription>
+	</field>
+	<field name="year" class="java.lang.Integer">
+		<fieldDescription><![CDATA[year]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="110" splitType="Stretch">
+			<image>
+				<reportElement uuid="a6764cbe-6ccd-48d0-a47d-cef32ac5cd77" x="12" y="23" width="81" height="87"/>
+				<imageExpression><![CDATA[$P{left_logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="c5cd6135-294b-492d-9cd5-e5a50917ede7" x="105" y="36" width="345" height="34"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="26" isBold="true" pdfFontName="Times-Roman" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSITY OF SINDH]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="7f2d3d56-a399-45a2-9d17-ed501a02947a" x="105" y="64" width="345" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="13fdd71a-f0df-4540-b4f2-8d10ff288b8d" x="105" y="70" width="345" height="17"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ALLAMA I.I KAZI CAMPUS JAMSHORO, SINDH, PAKISTAN]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="8689d6ef-b829-4769-92bc-af5abeee7adb" x="460" y="23" width="81" height="87"/>
+				<imageExpression><![CDATA[$P{right_logo}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="67" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="b40e11b8-38a9-4a8b-baa9-abefdfabef7d" x="105" y="47" width="345" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+					<font fontName="Times New Roman" size="16" isBold="true" isUnderline="true" pdfFontName="Times-Roman" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[TO WHOM IT MAY CONCERN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="efeeb654-f777-4cb1-b97c-84b1805bdd8d" x="460" y="19" width="38" height="28"/>
+				<textElement/>
+				<text><![CDATA[No. DA/ 
+Dated:]]></text>
+			</staticText>
+			<textField pattern="dd-MMM-yyyy">
+				<reportElement uuid="e672a173-329c-46fc-934f-4d367606f204" x="492" y="31" width="77" height="17"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="54" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="272" splitType="Stretch">
+			<textField>
+				<reportElement uuid="82d572d4-a8b5-4738-84bd-ac645d80453b" x="93" y="0" width="399" height="177"/>
+				<textElement markup="styled">
+					<font fontName="Times New Roman" size="14" isStrikeThrough="false" pdfFontName="Times-Roman" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["This is to certify that <style isBold='true'>" + $F{name} + " " + $F{fathersName} + "</style> having Roll No. <style isBold='true'>" + $F{rollNo} + "</style>, is a bonafide student of the " + $F{department}.replaceAll("&","&amp;") + ", " + $F{campus} + ", University of Sindh, " + $F{location} + ".\n\n" +
+
+$F{respect} + " has been granted provisional admission to " + $F{program}.replaceAll("&","&amp;") + " during the academic year " + $F{year} + "."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="25f23a9b-da30-4c07-bc92-2c497e801b5c" x="93" y="239" width="126" height="18"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Director Admissions]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="09c9f204-54bb-4586-bf75-1f813ee8eadf" x="93" y="257" width="146" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[University of Sindh, Jamshoro]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

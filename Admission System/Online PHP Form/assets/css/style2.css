@@ -1,0 +1,70 @@
+/* CSS Document */
+
+.error{
+	color:#ED1C1C;
+	font-size:17px;
+}
+.busy{
+	height:30px;
+	background: url(../images/busy.gif) no-repeat;
+	padding-left:40px;
+}
+.active{
+	color: #169FE6;
+}
+/*-------------------------Header---------------------*/
+.title1{
+	text-align:center;
+	color:#FFF;
+	font-size:40px;
+}
+.title2{
+	text-align:center;
+	color:#FFF;
+    font-size:30px;
+    padding-bottom:10px
+}
+.title3{
+    font-size:16px;
+	padding-bottom:5px;
+}
+.title4{
+    font-size:16px;
+	padding-bottom:5px;
+	float:left;
+}
+.twidth1{
+	width:200px;
+}
+.twidth2{
+	width:200px;
+	text-transform:uppercase;
+}
+.twidth3{
+	width:220px;
+	text-transform:uppercase;
+}
+.twidth4{
+	width:220px;
+}
+
+/*--------------content------------------------------*/
+.boxborder{
+	border-bottom: 1px solid #DDDDDD;
+    border-top: 1px solid #DDDDDD;
+    color: #169FE6;
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.lineborder{
+	border-bottom: 1px solid #DDDDDD;
+    border-top: 1px solid #DDDDDD;
+    color: #169FE6;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}

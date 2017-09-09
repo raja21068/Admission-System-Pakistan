@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Master Selection List Report - AMS" language="groovy" pageWidth="1191" pageHeight="842" orientation="Landscape" columnWidth="1151" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="09fbbbbb-4aba-4d43-9bf1-b96ab2fb7b06">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="495"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Yuogeshwar\\Desktop\\Yougesh_reports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIST_NO" class="java.lang.String"/>
+	<parameter name="ADMISSION_YEAR" class="java.lang.Integer"/>
+	<parameter name="SHOW_SIGN" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[true]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OTHER_SIGN" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[true]]></defaultValueExpression>
+	</parameter>
+	<parameter name="NOTIFICATION" class="java.lang.String"/>
+	<field name="discipline" class="java.lang.String"/>
+	<field name="shift" class="java.lang.String"/>
+	<field name="campus" class="java.lang.String"/>
+	<field name="campusLocation" class="java.lang.String"/>
+	<field name="candidatesList" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="85" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="01bfdd80-4964-4957-bed9-2c2da2ab8999" x="110" y="0" width="928" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[UNIVERSITY OF SINDH, JAMSHORO]]></text>
+			</staticText>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement uuid="edab795e-e9d6-4da1-8240-f07dee922391" x="0" y="0" width="110" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5c5d3f37-e432-4439-a221-2e3f54b3f470" x="0" y="20" width="1151" height="36"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font fontName="Arial" size="14" isBold="false" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<b>" + $P{LIST_NO} + "</b> MERIT LIST OF CANDIDATES PROVISIONALLY SELECTED FOR ADMISSION TO <b>" + $F{discipline} + "</b> - " + $F{shift} + "<br/> DURING ACADEMIC YEAR " + $P{ADMISSION_YEAR} + " " + $F{campus} + " " + $F{campusLocation}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="e5ae0c93-a7b1-42a5-ad7f-d76b5772b531" x="1127" y="0" width="24" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3e2ebacc-41b3-4bd8-9c25-2152bc8fd737" x="1100" y="0" width="27" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}+" / "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="93aca051-ed75-4e78-b3da-7ba6460d9cc3" x="0" y="72" width="23" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[S#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="960d2ee3-3939-460c-9689-eaa7997d1c4b" x="23" y="61" width="45" height="23"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SEAT
+NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c7acb98e-4610-44e1-887e-f6f5c9174ee8" x="68" y="72" width="186" height="12"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="073d1036-c53d-41ba-8d92-7ca0d721196d" x="254" y="72" width="189" height="12"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FATHER'S NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="25a0ca88-9b0b-445c-a60e-8e2403be343d" x="443" y="72" width="111" height="12"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DISTRICT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="15bde11e-0eb6-4de8-a592-4dc819e99ca3" x="554" y="72" width="32" height="12"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[U/R]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="607b1909-0df8-4d55-b9ac-bb35a5f3631c" x="586" y="72" width="106" height="12"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEGREE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e62399d3-57ab-4b4b-be12-c4e24ceaa472" x="692" y="72" width="26" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CH#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="64e4c7ed-2422-47c5-b5bc-d0ebfd39ff46" x="720" y="61" width="63" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[S.S.C]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="11e2e51f-3496-4300-bb58-9266154ce9e7" x="720" y="72" width="24" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e17d05ad-48ee-454f-bd30-b8c0c55f899d" x="758" y="72" width="25" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Y]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dd3bda7e-ac8c-492f-938b-236cecd7da9d" x="787" y="61" width="63" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[H.S.C]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1e844679-3165-4c26-9107-97462d343780" x="787" y="72" width="24" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e4b9142f-48be-44ef-a44e-ad65254d443b" x="825" y="72" width="25" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Y]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="57482a7b-0160-46e5-b442-2935419b4341" x="853" y="61" width="63" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="95fec2e4-0548-4327-99e0-95cdc7b19b79" x="853" y="72" width="24" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="86052c13-a6d2-4d53-bb3f-74a37022d2d7" x="891" y="72" width="25" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Y]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b035ea97-ff30-4883-a06a-ba8c63eb00fe" x="920" y="61" width="27" height="23"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AFT
+DED]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fcc7b5fd-9ea5-4b88-acb6-ee80fbc6f86e" x="947" y="61" width="33" height="23"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[TST
+SCR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="56b87c39-971e-4f2c-bd98-49dbd9ad6755" x="980" y="61" width="33" height="23"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[S.S.C
+5%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f85baea0-8992-4835-a6e1-dc772ccf70f1" x="1013" y="61" width="36" height="23"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[H.S.C
+5%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2a29ecef-298a-4e45-8d81-3ee79bd4e071" x="1049" y="61" width="33" height="23"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[GRD
+30%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dd8e5a2a-9bbf-43b6-8aca-007eb2606911" x="1082" y="61" width="32" height="23"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[TEST 60%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3fdb01ad-59f4-4e55-ad7e-8220b430dc3f" x="1114" y="61" width="37" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C.P.N]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="19603881-6b80-4c4d-8886-02bd7ea40d1f" x="0" y="84" width="1151" height="1"/>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<subreport runToBottom="true">
+				<reportElement uuid="16caedf8-4e80-471f-b3f9-7eb30f7857c5" x="0" y="2" width="1151" height="44"/>
+				<dataSourceExpression><![CDATA[$F{candidatesList}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "master_selection_list_sub_report.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="80e39d67-149d-49fd-86a0-eba98a25cd73" x="2" y="28" width="162" height="12">
+					<printWhenExpression><![CDATA[$P{SHOW_SIGN}]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[COMPUTER PROGRAMMER ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f068d923-43d5-4540-9896-86367fbfe8cd" x="935" y="28" width="199" height="12">
+					<printWhenExpression><![CDATA[$P{SHOW_SIGN}]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ASSISTANT DIRECTOR ADMISSIONS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5ab6a850-1a46-47ce-83c6-2c4b3f4cf613" x="544" y="28" width="199" height="12">
+					<printWhenExpression><![CDATA[$P{OTHER_SIGN}]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DEPUTY DIRECTOR ADMISSIONS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dc1bbe7f-f05b-4a69-9bb8-8de586574cdd" x="182" y="28" width="194" height="26">
+					<printWhenExpression><![CDATA[$P{OTHER_SIGN}]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[CONVENOR,
+TECHNICAL/SELECTION COMMITEE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d240fb97-5e06-43bf-9f86-dc3dfef77114" x="43" y="61" width="1108" height="22"/>
+				<textElement markup="html">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[THE UNIVERSITY OF SINDH RESERVES THE RIGHT TO REECTIFY ANY ERROR/OMMISSION DETECTED LATER ON AND ALSO RESERVES THE RIGHT TO CANCEL ANY PROVISIONAL ADMISSION AT ANY TIME WITHOUT ISSUING NOTICE.
+THE TABLE CONCERNED CLERK IS BOUND TO VERIFY THE ELIGIBLITY ETC.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f961dc27-3a30-4901-8aeb-860e8a18016d" x="755" y="28" width="160" height="12">
+					<printWhenExpression><![CDATA[$P{OTHER_SIGN}]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DIRECTOR ADMISSIONS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="098c77cb-5f96-4b49-8e40-148ba5acc849" x="394" y="29" width="145" height="26">
+					<printWhenExpression><![CDATA[$P{OTHER_SIGN}]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[CONVERNOR,
+ADMISSION COMMITEE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="72126223-977c-4dbb-8605-54870edb7ace" x="2" y="61" width="39" height="22"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOTE:]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="da49589d-0616-4ff8-bd2c-26394c4ad76a" x="2" y="26" width="162" height="1">
+					<printWhenExpression><![CDATA[$P{SHOW_SIGN}]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement uuid="1b2dc58f-2b92-45a2-9980-d60813b39a30" x="935" y="26" width="199" height="1">
+					<printWhenExpression><![CDATA[$P{OTHER_SIGN}]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement uuid="97a63ef6-c4a2-4d4d-ba6e-e0f5b198c22c" x="544" y="26" width="199" height="1">
+					<printWhenExpression><![CDATA[$P{OTHER_SIGN}]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement uuid="6a1bd870-d66c-422a-b481-c91b04065c9e" x="755" y="26" width="160" height="1">
+					<printWhenExpression><![CDATA[$P{OTHER_SIGN}]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement uuid="a24546a0-d985-4ce6-b134-3d611b97d91c" x="182" y="26" width="194" height="1">
+					<printWhenExpression><![CDATA[$P{OTHER_SIGN}]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement uuid="75a70d0c-5dcf-4937-9b51-e0cdc5bb353d" x="389" y="26" width="145" height="1">
+					<printWhenExpression><![CDATA[$P{OTHER_SIGN}]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<textField>
+				<reportElement uuid="c6117441-740c-47f7-9b6f-77fedc674091" x="2" y="81" width="1151" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{NOTIFICATION}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

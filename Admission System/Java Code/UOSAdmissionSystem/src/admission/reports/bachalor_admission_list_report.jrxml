@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Seats Distribution" language="groovy" pageWidth="1192" pageHeight="842" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="192b413f-ee8a-4ef8-93e6-7758fb225ea0">
+	<property name="ireport.zoom" value="0.9090909090909094"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+        
+	<subDataset name="dataset1" uuid="1da7a515-3289-4f58-8c98-05e1ab9b6220">
+		<field name="campusCategory" class="admission.model.CampusCategory">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="dataset2" uuid="1da7a515-3289-4f58-8c98-05e1ab9b6220">
+		<field name="ald" class="admission.model.AdmissionListDetails">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="title" class="java.lang.String"/>
+	<field name="cposg" class="admission.model.CposGroup">
+		<fieldDescription><![CDATA[cposg]]></fieldDescription>
+	</field>
+	<field name="campusCategories" class="java.util.Collection">
+		<fieldDescription><![CDATA[campusCategories]]></fieldDescription>
+	</field>
+	<variable name="count" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[Boolean.TRUE]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement uuid="d5951385-0195-4e8e-9d7f-a23de8ae6779" x="0" y="0" width="1152" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{title}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="98" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="519d61c7-1744-40f5-907b-e1dffa179248" x="0" y="0" width="1152" height="98"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="dataset1" uuid="786221a2-fe77-45e8-b3cb-18d280cc98de">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{campusCategories})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="98" width="1152">
+						<textField>
+							<reportElement uuid="08b8723e-2895-482c-a1fd-0d0c7f8e31b3" x="99" y="20" width="424" height="20"/>
+							<textElement textAlignment="Left" verticalAlignment="Middle">
+								<font fontName="Times New Roman" size="10" isBold="true" pdfFontName="Times-Roman"/>
+								<paragraph leftIndent="5"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{campusCategory}.toString()]]></textFieldExpression>
+						</textField>
+						<staticText>
+							<reportElement uuid="ebef5c39-b27d-4ebb-a446-5b29ff30d927" x="0" y="50" width="33" height="15"/>
+							<textElement>
+								<font fontName="Times New Roman" size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[SNO.]]></text>
+						</staticText>
+						<staticText>
+							<reportElement uuid="f888ab1a-a577-4bf3-a5a0-8c6f66b35c70" x="42" y="50" width="57" height="15"/>
+							<textElement>
+								<font fontName="Times New Roman" size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[SEAT NO.]]></text>
+						</staticText>
+						<staticText>
+							<reportElement uuid="e3e68130-70b3-422e-92d0-2d18054efe2c" x="110" y="50" width="57" height="15"/>
+							<textElement>
+								<font fontName="Times New Roman" size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[NAME]]></text>
+						</staticText>
+						<staticText>
+							<reportElement uuid="be2a00d6-6f3a-498a-bf49-c0851473e426" x="337" y="50" width="100" height="15"/>
+							<textElement>
+								<font fontName="Times New Roman" size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[FATHER'S NAME]]></text>
+						</staticText>
+						<staticText>
+							<reportElement uuid="6c6aa1f9-5c3e-4bf7-98d6-32c247d9551f" x="582" y="50" width="64" height="15"/>
+							<textElement>
+								<font fontName="Times New Roman" size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[DISTRICT]]></text>
+						</staticText>
+						<staticText>
+							<reportElement uuid="5b18f13e-b497-4140-8995-0911d70e9922" x="728" y="50" width="30" height="15"/>
+							<textElement>
+								<font fontName="Times New Roman" size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[U/R]]></text>
+						</staticText>
+						<staticText>
+							<reportElement uuid="00324ded-2838-46db-97d4-082b523bc6e8" x="767" y="50" width="38" height="15"/>
+							<textElement>
+								<font fontName="Times New Roman" size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[M10%]]></text>
+						</staticText>
+						<staticText>
+							<reportElement uuid="47409a50-a753-4dff-b833-54b9c89c48e7" x="814" y="50" width="28" height="15"/>
+							<textElement>
+								<font fontName="Times New Roman" size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[M_Y]]></text>
+						</staticText>
+						<staticText>
+							<reportElement uuid="1061c736-9934-435c-a8ed-6438f6b3e4b1" x="855" y="50" width="38" height="15"/>
+							<textElement>
+								<font fontName="Times New Roman" size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[I40%]]></text>
+						</staticText>
+						<staticText>
+							<reportElement uuid="f478b492-44d6-4324-8027-ec79a3c1f2d1" x="902" y="50" width="28" height="15"/>
+							<textElement>
+								<font fontName="Times New Roman" size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[I_Y]]></text>
+						</staticText>
+						<staticText>
+							<reportElement uuid="48ee9dad-0242-4e5f-87b0-b6aa93e9e296" x="944" y="50" width="28" height="15"/>
+							<textElement>
+								<font fontName="Times New Roman" size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[T_M]]></text>
+						</staticText>
+						<staticText>
+							<reportElement uuid="9043febc-15fa-461c-aa8a-a20103a1a581" x="985" y="50" width="35" height="15"/>
+							<textElement>
+								<font fontName="Times New Roman" size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[T50%]]></text>
+						</staticText>
+						<staticText>
+							<reportElement uuid="9043febc-15fa-461c-aa8a-a20103a1a581" x="1029" y="50" width="46" height="15"/>
+							<textElement>
+								<font fontName="Times New Roman" size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[SCORE]]></text>
+						</staticText>
+						<staticText>
+							<reportElement uuid="88ef5147-02cd-4a09-a670-90109d05ed80" x="1084" y="50" width="33" height="15"/>
+							<textElement>
+								<font fontName="Times New Roman" size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[CNO.]]></text>
+						</staticText>
+						<line>
+							<reportElement uuid="791e0489-5318-47a6-a52d-e3815009558e" x="0" y="46" width="1152" height="1"/>
+						</line>
+						<line>
+							<reportElement uuid="7201510a-c5aa-47f6-ba04-d9545375c6d1" x="0" y="71" width="1152" height="1"/>
+						</line>
+						<componentElement>
+							<reportElement uuid="519d61c7-1744-40f5-907b-e1dffa179248" x="0" y="76" width="1152" height="20"/>
+							<jr:list printOrder="Vertical">
+								<datasetRun subDataset="dataset2" uuid="786221a2-fe77-45e8-b3cb-18d280cc98de">
+									<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{campusCategory}.getNewAld())]]></dataSourceExpression>
+								</datasetRun>
+								<jr:listContents height="20" width="1152">
+									<textField>
+										<reportElement uuid="f395973a-d47d-4b5f-b4e1-17b82120bff4" x="0" y="0" width="33" height="15"/>
+										<textElement>
+											<font fontName="Times New Roman" size="12"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{ald}.getCandidate().getSeatNo()]]></textFieldExpression>
+									</textField>
+									<textField>
+										<reportElement uuid="bf0a8c00-aa69-4e49-a98f-fdc391fc4e12" x="42" y="0" width="57" height="15"/>
+										<textElement textAlignment="Right">
+											<font fontName="Times New Roman" size="12"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{ald}.getCandidate().getSeatNo()]]></textFieldExpression>
+									</textField>
+									<textField>
+										<reportElement uuid="3c683ec3-0486-423b-8e81-626adbb668a9" x="110" y="0" width="210" height="15"/>
+										<textElement textAlignment="Left">
+											<font fontName="Times New Roman" size="12"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{ald}.getCandidate().getName()]]></textFieldExpression>
+									</textField>
+									<textField>
+										<reportElement uuid="fca50912-c0cd-4482-9a62-d507d8317e3d" x="337" y="0" width="230" height="15"/>
+										<textElement textAlignment="Left">
+											<font fontName="Times New Roman" size="12"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{ald}.getCandidate().getFathersName()]]></textFieldExpression>
+									</textField>
+									<textField>
+										<reportElement uuid="816fa0d7-d1f8-4414-8443-a8c31cb86ee5" x="582" y="0" width="136" height="15"/>
+										<textElement textAlignment="Left">
+											<font fontName="Times New Roman" size="12"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{ald}.getCandidate().getDistrict().toString()]]></textFieldExpression>
+									</textField>
+									<textField>
+										<reportElement uuid="d2ad64f2-ac0f-44a5-b82d-13a43374bb4d" x="728" y="0" width="30" height="15"/>
+										<textElement textAlignment="Left">
+											<font fontName="Times New Roman" size="12"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{ald}.getCandidate().getArea()]]></textFieldExpression>
+									</textField>
+									<textField>
+										<reportElement uuid="a80e9554-5364-4341-bc31-39fb2584496c" x="767" y="0" width="38" height="15"/>
+										<textElement textAlignment="Left">
+											<font fontName="Times New Roman" size="12"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{ald}.getSscPer()]]></textFieldExpression>
+									</textField>
+									<textField>
+										<reportElement uuid="0cac72ad-d328-4c61-a9e5-29167c836716" x="814" y="0" width="30" height="15"/>
+										<textElement textAlignment="Left">
+											<font fontName="Times New Roman" size="12"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{ald}.getCandidate().getCredentialDetailses().toArray()[0].getPassingYear()]]></textFieldExpression>
+									</textField>
+									<textField>
+										<reportElement uuid="73762fa3-8de0-43c3-a631-7c62662b468b" x="902" y="0" width="30" height="15"/>
+										<textElement textAlignment="Left">
+											<font fontName="Times New Roman" size="12"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{ald}.getHscPer()]]></textFieldExpression>
+									</textField>
+									<textField>
+										<reportElement uuid="6020e97a-c658-4c5a-a694-25a365e0249b" x="855" y="0" width="38" height="15"/>
+										<textElement textAlignment="Left">
+											<font fontName="Times New Roman" size="12"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{ald}.getCandidate().getCredentialDetailses().toArray()[1].getPassingYear()]]></textFieldExpression>
+									</textField>
+									<textField>
+										<reportElement uuid="246db038-8026-4413-b490-ee0523054a96" x="944" y="0" width="30" height="15"/>
+										<textElement textAlignment="Left">
+											<font fontName="Times New Roman" size="12"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{ald}.getCandidate().getTestScore()]]></textFieldExpression>
+									</textField>
+									<textField>
+										<reportElement uuid="c1507520-a130-4b5a-9bbc-54942ba803a2" x="985" y="0" width="30" height="15"/>
+										<textElement textAlignment="Left">
+											<font fontName="Times New Roman" size="12"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{ald}.getPreTestScore()]]></textFieldExpression>
+									</textField>
+									<textField>
+										<reportElement uuid="b58eab93-931f-4edc-bbb1-ed92a1d32cd6" x="1030" y="0" width="45" height="15"/>
+										<textElement textAlignment="Right">
+											<font fontName="Times New Roman" size="12"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{ald}.getScore()]]></textFieldExpression>
+									</textField>
+									<textField>
+										<reportElement uuid="b58eab93-931f-4edc-bbb1-ed92a1d32cd6" x="1083" y="0" width="33" height="15"/>
+										<textElement textAlignment="Right">
+											<font fontName="Times New Roman" size="12"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{ald}.getCandidateProgramOfStudy().getChoiceNo()]]></textFieldExpression>
+									</textField>
+								</jr:listContents>
+							</jr:list>
+						</componentElement>
+						<staticText>
+							<reportElement uuid="ebef5c39-b27d-4ebb-a446-5b29ff30d927" x="11" y="0" width="77" height="20"/>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Times New Roman" size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[DISCIPLINE:]]></text>
+						</staticText>
+						<textField>
+							<reportElement uuid="45d2c847-3657-4bc7-af94-245eee63c74f" mode="Opaque" x="99" y="0" width="424" height="20"/>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Times New Roman" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{cposg}.toString()]]></textFieldExpression>
+						</textField>
+						<staticText>
+							<reportElement uuid="23a1b81b-c74e-4b49-9b71-75711b5580c3" x="11" y="20" width="77" height="20"/>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Times New Roman" size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[CATEGORY:]]></text>
+						</staticText>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

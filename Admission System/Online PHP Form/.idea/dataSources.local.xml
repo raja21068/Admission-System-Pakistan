@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - us_admission_v2@localhost" uuid="b231e648-4fdb-41ab-8655-21ee43271b77">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>us_admission_v2.*</schema-pattern>
+      <default-schemas>test.*</default-schemas>
+    </data-source>
+    <data-source name="MySQL - @localhost [2]" uuid="95824275-1be4-457b-941c-7b15aa6261bb">
+      <secret-storage>master_key</secret-storage>
+      <first-sync>true</first-sync>
+    </data-source>
+    <data-source name="exam_original" uuid="4d9a24d1-dc36-4e15-a970-176a77efe4ec">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>exam_original.*</schema-pattern>
+      <default-schemas>exam_original.*</default-schemas>
+    </data-source>
+    <data-source name="MySQL - @localhost" uuid="c61ace45-4c72-4e1c-becc-8c81bff7e0dc">
+      <secret-storage>master_key</secret-storage>
+      <first-sync>true</first-sync>
+    </data-source>
+    <data-source name="MySQL - @localhost [3]" uuid="267ea131-5ffc-4d4e-a5b2-4a5de7bd833c">
+      <secret-storage>master_key</secret-storage>
+      <first-sync>true</first-sync>
+    </data-source>
+  </component>
+</project>

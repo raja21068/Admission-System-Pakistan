@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1191" pageHeight="842" orientation="Landscape" columnWidth="1151" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d7a877e9-bfe3-4169-a4a3-c18279df5473">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="1139"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#C0C0C0"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="dataset1" uuid="76bee1eb-70af-4c69-968d-6c596ed07894">
+		<field name="seatNo" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="fathersName" class="java.lang.String"/>
+		<field name="surname" class="java.lang.String"/>
+		<field name="district" class="java.lang.String"/>
+		<field name="area" class="java.lang.String"/>
+		<field name="grdGroup" class="java.lang.String"/>
+		<field name="choiceNo" class="java.lang.Integer"/>
+		<field name="matricObtained" class="java.lang.Integer"/>
+		<field name="matricPerc" class="java.lang.Float"/>
+		<field name="matricYear" class="java.lang.Integer"/>
+		<field name="interObtained" class="java.lang.Integer"/>
+		<field name="interYear" class="java.lang.Integer"/>
+		<field name="interPerc" class="java.lang.Float"/>
+		<field name="grdObtained" class="java.lang.Integer"/>
+		<field name="grdPerc" class="java.lang.Float"/>
+		<field name="grdYear" class="java.lang.Integer"/>
+		<field name="testScore" class="java.lang.Integer"/>
+		<field name="scorePerc" class="java.lang.Float"/>
+		<field name="deductionMarks" class="java.lang.Integer"/>
+		<variable name="counter" class="java.lang.Integer" calculation="Count">
+			<variableExpression><![CDATA[$V{counter}+1]]></variableExpression>
+			<initialValueExpression><![CDATA[1]]></initialValueExpression>
+		</variable>
+		<variable name="netPerc" class="java.lang.Float">
+			<variableExpression><![CDATA[$F{scorePerc}+$F{grdPerc}+$F{interPerc}+$F{matricPerc}]]></variableExpression>
+		</variable>
+	</subDataset>
+	<parameter name="listNo" class="java.lang.String"/>
+	<parameter name="discipline" class="java.lang.String"/>
+	<parameter name="campus" class="java.lang.String"/>
+	<parameter name="campusLocation" class="java.lang.String"/>
+	<parameter name="subReport" class="java.io.InputStream"/>
+	<parameter name="shift" class="java.lang.String"/>
+	<parameter name="admissionYear" class="java.lang.Integer"/>
+	<field name="category" class="java.lang.String"/>
+	<field name="candidates" class="java.util.List"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="83" splitType="Stretch">
+			<textField pattern="yyyy.MM.dd G &apos;at&apos; HH:mm:ss z">
+				<reportElement uuid="05b7911d-5f03-4a0d-8950-f78cb198d037" x="0" y="0" width="91" height="16"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd-MM-YYYY").format( new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="17695bfd-f855-4ac8-9442-50cb4549e8c0" x="0" y="16" width="1151" height="36"/>
+				<textElement textAlignment="Center" markup="html">
+					<font size="14" isBold="false" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<b>"+$P{listNo}+"</b> MERIT LIST OF CANDIDATES PROVISIONALLY SELECTED FOR ADMISSION TO <b>"+$P{discipline}+"</b> - "+$P{shift}
++"<br/> DURING ACADEMIC YEAR "+$P{admissionYear}+"  "+$P{campus}.toUpperCase()+" "+$P{campusLocation}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="fc21ea2e-b47d-44f1-b672-597fffa39dd8" x="1117" y="16" width="24" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="77080d2e-06f6-4017-b625-7a539ee1b43d" x="1090" y="16" width="27" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}+" / "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="3" y="66" width="20" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[S#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="25" y="57" width="37" height="25"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SEAT
+NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="70" y="67" width="180" height="15"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="256" y="67" width="185" height="15"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FATHER'S NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="445" y="67" width="109" height="15"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DISTRICT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="556" y="67" width="24" height="13"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[U/R]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="588" y="67" width="86" height="13"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEGREE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="681" y="67" width="40" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CHOICE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="720" y="56" width="63" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[S.S.C]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="720" y="67" width="24" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="751" y="67" width="32" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Y]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="795" y="56" width="61" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[H.S.C]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="795" y="67" width="25" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="834" y="67" width="23" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Y]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="869" y="59" width="53" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="869" y="69" width="24" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="897" y="69" width="25" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Y]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="922" y="59" width="25" height="23"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AFT
+DED]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="949" y="59" width="28" height="23"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[TST
+SCR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="982" y="59" width="28" height="23"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[S.S.C
+10%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="1015" y="59" width="30" height="23"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[H.S.C
+15%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="1051" y="59" width="27" height="23"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[GRD
+35%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="144cc170-bd8c-43a9-b6fd-da731892d080" x="1084" y="59" width="30" height="23"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[TEST 40%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="40222dcf-465c-478e-b558-6bc16810048d" x="1116" y="59" width="30" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C.P.N]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="e0fa2017-2ba3-4615-bb82-b067b11b9656" x="5" y="82" width="1148" height="1"/>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="52" splitType="Stretch">
+			<textField>
+				<reportElement uuid="eb86eb7d-668a-4ec7-9dfb-c7245605d145" x="3" y="10" width="345" height="16"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{category}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement uuid="d9bb2ab8-f17b-4299-b978-e88f41ea7fa9" mode="Transparent" x="0" y="27" width="1150" height="16" backcolor="#FFFFFF"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical" ignoreWidth="false">
+					<datasetRun subDataset="dataset1" uuid="c671b5b0-b772-4c81-aaa1-edad3e82bc9d">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{candidates})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="16" width="1150">
+						<frame>
+							<reportElement uuid="ce5f93fb-b0e9-4de3-9a09-b31c35af8b11" style="Row" mode="Opaque" x="5" y="1" width="1143" height="15"/>
+							<textField>
+								<reportElement uuid="29a9e704-fd12-4263-851c-5be5ba5a26d8" style="Row" x="0" y="0" width="20" height="14"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{counter}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="513d065c-04dc-4e2a-952d-d32b5cdae828" style="Row" x="20" y="0" width="37" height="14"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{seatNo}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="96f41cd9-4393-4362-b0a6-50b6355ec8da" style="Row" x="65" y="0" width="180" height="14"/>
+								<textElement>
+									<font fontName="Arial" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="ae66636e-23d1-4ea7-9c4a-6e313e32b9de" style="Row" x="251" y="0" width="185" height="14"/>
+								<textElement>
+									<font fontName="Arial" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{fathersName}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="0c618eed-8f82-43f0-bcf4-38c54e956400" x="440" y="0" width="109" height="14"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{district}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="69510cd3-6442-44a3-bb97-31a2578c3e74" x="558" y="0" width="10" height="14"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{area}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="1589fc40-be12-4065-b964-68dfddf5b27c" style="Row" x="583" y="0" width="109" height="14"/>
+								<textElement>
+									<font fontName="Arial" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{grdGroup}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="95cc9930-8685-489e-9747-fc1a48367758" x="692" y="0" width="16" height="13"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$F{choiceNo}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="2e0fe368-0a6f-4a0b-94e6-90d869c6987a" style="Row" x="715" y="0" width="24" height="14"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{matricObtained}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="c2b14c2c-e827-46b7-aa17-f48d951c0083" style="Row" x="744" y="0" width="34" height="14"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{matricYear}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="9af88059-f04d-4838-a1c1-c6d34c74f479" style="Row" x="790" y="0" width="25" height="14"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{interObtained}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="14178f10-6bb7-4f53-b610-c7feb95e791a" style="Row" x="829" y="0" width="23" height="14"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{interYear}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="4bd29aec-6029-473a-b66c-89e765cef724" style="Row" x="864" y="0" width="24" height="14"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial" size="10" isBold="false"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{grdObtained}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="2705b6c4-f4e8-47d9-b291-69fe412a8696" style="Row" x="892" y="0" width="25" height="14"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{grdYear}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="23bb9637-86db-4b67-a1d5-d4c28425f5b0" x="917" y="0" width="27" height="15"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{deductionMarks} > 0 ? (""+($F{grdObtained}-$F{deductionMarks})) : "--"]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="e8ea43f3-3bb7-4f10-8372-412a9a75679f" x="944" y="0" width="27" height="14"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial" size="10" isBold="false"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{testScore}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="f02c15cc-c425-43f4-be58-5c57923402a5" style="Row" x="977" y="0" width="28" height="14"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[String.format("%.2f" ,$F{matricPerc})]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="e8ec92b4-9f5f-4cf9-aa4f-186167f8d4b5" style="Row" x="1010" y="0" width="30" height="14"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[String.format("%.2f" ,$F{interPerc})]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="932b7fb6-dabb-4cd9-bf6e-52be249f4ebd" style="Row" x="1046" y="0" width="27" height="14"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[String.format("%.2f", $F{grdPerc})]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="9d3a2654-45b1-4915-b19f-aa9e771edcac" x="1079" y="0" width="30" height="14"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[String.format("%.2f", $F{scorePerc})]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="99bb8749-29f8-4c18-a612-970372ba9176" x="1112" y="0" width="29" height="14"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[String.format("%.2f",$V{netPerc})]]></textFieldExpression>
+							</textField>
+						</frame>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="115">
+			<staticText>
+				<reportElement uuid="46d5d369-0449-4318-866a-96c0f402aeab" x="12" y="47" width="175" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[COMPUTER PROGRAMMER ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="89cc5597-9b5a-4d75-bb73-12978e476638" x="195" y="47" width="206" height="17"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ASSISTANT DIRECTOR ADMISSIONS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="91c4f27c-c650-4e7a-9131-8460977e3be1" x="415" y="47" width="195" height="17"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DEPUTY DIRECTOR ADMISSIONS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fc1e2993-7f81-488c-8bf9-9c5ef4807056" x="794" y="47" width="177" height="29"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[CONVENOR,
+TECHNICAL/SELECTION COMMITEE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b15fa258-9842-4300-8620-9b2fc755d882" x="42" y="76" width="1108" height="22"/>
+				<textElement markup="html">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[THE UNIVERSITY OF SINDH RESERVES THE RIGHT TO REECTIFY ANY ERROR/OMMISSION DETECTED LATER ON AND ALSO RESERVES THE RIGHT TO CANCEL ANY PROVISIONAL ADMISSION AT ANY TIME WITHOUT ISSUING NOTICE.
+THE TABLE CONCERNED CLERK IS BOUND TO VERIFY THE ELIGIBLITY ETC.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="91c4f27c-c650-4e7a-9131-8460977e3be1" x="629" y="47" width="148" height="17"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DIRECTOR ADMISSIONS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9c704f1e-bf16-4714-9b0c-1b827c6d071a" x="991" y="47" width="131" height="29"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[CONVERNOR,
+ADMISSION COMMITEE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="df2d5072-7942-433c-8e4d-306279858e76" x="3" y="76" width="39" height="22"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOTE:]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>

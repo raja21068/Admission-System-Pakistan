@@ -1,0 +1,2732 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - us_admission_v2@localhost" uuid="b231e648-4fdb-41ab-8655-21ee43271b77">
+    <database-info product="MySQL" version="5.6.11" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="us_admission_v2"/>
+    <table name="accounts" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="account_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="candidate_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="reg_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="active" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="account_id"/>
+      <foreign-key name="fk_account_candidate1" columns="candidate_id" ref-table="candidate" ref-schema="" ref-catalog="us_admission_v2" ref-columns="candidate_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_part_registry_account1" table="part_registry" schema="" catalog="us_admission_v2" columns="account_id"/>
+      <index name="fk_account_candidate1_idx" unique="false" columns="candidate_id"/>
+    </table>
+    <table name="admission_list" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="admission_list_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="admission_session_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="campus_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="list_no" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="ob_date_from" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="ob_date_to" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="is_manual" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="admission_list_id"/>
+      <foreign-key name="fk_admission_list_admission_session1" columns="admission_session_id" ref-table="admission_session" ref-schema="" ref-catalog="us_admission_v2" ref-columns="admission_session_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_admission_list_campus1" columns="campus_id" ref-table="campus" ref-schema="" ref-catalog="us_admission_v2" ref-columns="campus_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_admission_list_details_admission_list1" table="admission_list_details" schema="" catalog="us_admission_v2" columns="admission_list_id"/>
+      <index name="fk_admission_list_admission_session1_idx" unique="false" columns="admission_session_id"/>
+      <index name="fk_admission_list_campus1_idx" unique="false" columns="campus_id"/>
+    </table>
+    <table name="admission_list_details" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="admission_list_details_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="candidate_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="admission_list_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="cpos_group_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="candidate_program_of_study_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="campus_category_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="status" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="remarks" sqlType="VARCHAR" precision="256" scale="0" nullable="true" jdbcType="12"/>
+      <column name="active" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <column name="roll_no" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="sel_cat" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="admission_list_details_id"/>
+      <foreign-key name="fk_admission_list_details_admission_list1" columns="admission_list_id" ref-table="admission_list" ref-schema="" ref-catalog="us_admission_v2" ref-columns="admission_list_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_admission_list_details_campus_category1" columns="campus_category_id" ref-table="campus_category" ref-schema="" ref-catalog="us_admission_v2" ref-columns="campus_category_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_admission_list_details_candidate_program_of_study1" columns="candidate_program_of_study_id" ref-table="candidate_program_of_study" ref-schema="" ref-catalog="us_admission_v2" ref-columns="candidate_program_of_study_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_admission_list_details_cpos_group1" columns="cpos_group_id" ref-table="cpos_group" ref-schema="" ref-catalog="us_admission_v2" ref-columns="cpos_group_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_merit_candidate1" columns="candidate_id" ref-table="candidate" ref-schema="" ref-catalog="us_admission_v2" ref-columns="candidate_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_j_candidate_challan_admission_list_details1" table="j_candidate_challan" schema="" catalog="us_admission_v2" columns="admission_list_details_id"/>
+      <exported-key name="fk_part_registry_admission_list_details1" table="part_registry" schema="" catalog="us_admission_v2" columns="admission_list_details_id"/>
+      <index name="fk_admission_list_details_admission_list1_idx" unique="false" columns="admission_list_id"/>
+      <index name="fk_admission_list_details_campus_category1_idx" unique="false" columns="campus_category_id"/>
+      <index name="fk_admission_list_details_candidate_program_of_study1_idx" unique="false" columns="candidate_program_of_study_id"/>
+      <index name="fk_admission_list_details_cpos_group1_idx" unique="false" columns="cpos_group_id"/>
+      <index name="fk_merit_candidate1_idx" unique="false" columns="candidate_id"/>
+    </table>
+    <table name="admission_session" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="admission_session_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="admission_year_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="program_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="admission_session_id"/>
+      <foreign-key name="fk_admission_session_admission_year1" columns="admission_year_id" ref-table="admission_year" ref-schema="" ref-catalog="us_admission_v2" ref-columns="admission_year_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_admission_session_program_type1" columns="program_type_id" ref-table="program_type" ref-schema="" ref-catalog="us_admission_v2" ref-columns="program_type_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_admission_list_admission_session1" table="admission_list" schema="" catalog="us_admission_v2" columns="admission_session_id"/>
+      <exported-key name="fk_discipline_category_seats_admission_session1" table="discipline_category_seats" schema="" catalog="us_admission_v2" columns="admission_session_id"/>
+      <exported-key name="fk_fee_admission_session1" table="fee" schema="" catalog="us_admission_v2" columns="admission_session_id"/>
+      <index name="fk_admission_session_admission_year1_idx" unique="false" columns="admission_year_id"/>
+      <index name="fk_admission_session_program_type1_idx" unique="false" columns="program_type_id"/>
+    </table>
+    <table name="admission_year" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="admission_year_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="year" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="admission_year_id"/>
+      <exported-key name="fk_admission_session_admission_year1" table="admission_session" schema="" catalog="us_admission_v2" columns="admission_year_id"/>
+      <exported-key name="fk_candidate_admission_year1" table="candidate" schema="" catalog="us_admission_v2" columns="admission_year_id"/>
+      <exported-key name="fk_district_seat_distribution_admission_year1" table="district_seat_distribution" schema="" catalog="us_admission_v2" columns="admission_year_id"/>
+      <exported-key name="fk_j_fee_structure_admission_year1" table="j_fee_structure" schema="" catalog="us_admission_v2" columns="admission_year_id"/>
+      <exported-key name="fk_test_admission_year1" table="test" schema="" catalog="us_admission_v2" columns="admission_year_id"/>
+    </table>
+    <table name="allowed_program_of_study" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="program_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="program_of_study_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="fk_allowed_program_of_study_program1_idx" unique="false" columns="program_id"/>
+      <index name="fk_allowed_program_of_study_program_of_study1_idx" unique="false" columns="program_of_study_id"/>
+    </table>
+    <table name="applied_campus" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="applied_campus_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="candidate_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="campus_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="applied_campus_id"/>
+      <foreign-key name="fk_applied_campus_campus1" columns="campus_id" ref-table="campus" ref-schema="" ref-catalog="us_admission_v2" ref-columns="campus_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_applied_campus_candidate1" columns="candidate_id" ref-table="candidate" ref-schema="" ref-catalog="us_admission_v2" ref-columns="candidate_id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="fk_applied_campus_campus1_idx" unique="false" columns="campus_id"/>
+      <index name="fk_applied_campus_candidate1_idx" unique="false" columns="candidate_id"/>
+    </table>
+    <table name="applied_category" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="applied_category_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="candidate_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="category_code" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="code" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="applied_category_id"/>
+      <foreign-key name="fk_applied_category_candidate1" columns="candidate_id" ref-table="candidate" ref-schema="" ref-catalog="us_admission_v2" ref-columns="candidate_id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="fk_applied_category_candidate1_idx" unique="false" columns="candidate_id"/>
+    </table>
+    <table name="bank_branch" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="bank_branch_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="500" scale="0" nullable="false" jdbcType="12"/>
+      <column name="remarks" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="bank_branch_id"/>
+    </table>
+    <table name="campus" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="campus_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="location" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="code" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="is_main" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="display_order" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="campus_id"/>
+      <exported-key name="fk_admission_list_campus1" table="admission_list" schema="" catalog="us_admission_v2" columns="campus_id"/>
+      <exported-key name="fk_applied_campus_campus1" table="applied_campus" schema="" catalog="us_admission_v2" columns="campus_id"/>
+      <exported-key name="fk_campus_category_campus1" table="campus_category" schema="" catalog="us_admission_v2" columns="campus_id"/>
+      <exported-key name="fk_campus_program_of_study_campus1" table="campus_program_of_study" schema="" catalog="us_admission_v2" columns="campus_id"/>
+      <exported-key name="fk_jurisidction_campus1" table="jurisdiction" schema="" catalog="us_admission_v2" columns="campus_id"/>
+      <exported-key name="fk_test_campus1" table="test" schema="" catalog="us_admission_v2" columns="campus_id"/>
+    </table>
+    <table name="campus_category" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="campus_category_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="campus_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="category_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="on_percent" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="percent" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="display_order" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="program_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="shift_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="campus_category_id"/>
+      <foreign-key name="fk_campus_category_campus1" columns="campus_id" ref-table="campus" ref-schema="" ref-catalog="us_admission_v2" ref-columns="campus_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_campus_category_category1" columns="category_id" ref-table="category" ref-schema="" ref-catalog="us_admission_v2" ref-columns="category_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_program_type" columns="program_type_id" ref-table="program_type" ref-schema="" ref-catalog="us_admission_v2" ref-columns="program_type_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_shift_id" columns="shift_id" ref-table="shift" ref-schema="" ref-catalog="us_admission_v2" ref-columns="shift_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_admission_list_details_campus_category1" table="admission_list_details" schema="" catalog="us_admission_v2" columns="campus_category_id"/>
+      <exported-key name="fk_discipline_category_seats_campus_category1" table="discipline_category_seats" schema="" catalog="us_admission_v2" columns="campus_category_id"/>
+      <exported-key name="fk_j_fee_structure_campus_category1" table="j_fee_structure" schema="" catalog="us_admission_v2" columns="campus_category_id"/>
+      <index name="fk_campus_category_campus1_idx" unique="false" columns="campus_id"/>
+      <index name="fk_campus_category_category1_idx" unique="false" columns="category_id"/>
+      <index name="fk_program_type" unique="false" columns="program_type_id"/>
+      <index name="FK_session_id" unique="false" columns="shift_id"/>
+    </table>
+    <table name="campus_program_of_study" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="campus_program_of_study_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="campus_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="program_of_study_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="shift_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="display_order" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="is_seperate" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <column name="is_quota_oriented" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <column name="jurisdiction" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="campus_program_of_study_id"/>
+      <foreign-key name="fk_campus_program_of_study_campus1" columns="campus_id" ref-table="campus" ref-schema="" ref-catalog="us_admission_v2" ref-columns="campus_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_campus_program_of_study_program_of_study1" columns="program_of_study_id" ref-table="program_of_study" ref-schema="" ref-catalog="us_admission_v2" ref-columns="program_of_study_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_campus_program_of_study_shift1" columns="shift_id" ref-table="shift" ref-schema="" ref-catalog="us_admission_v2" ref-columns="shift_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_candidate_program_of_study_campus_program_of_study1" table="candidate_program_of_study" schema="" catalog="us_admission_v2" columns="campus_program_of_study_id"/>
+      <exported-key name="fk_pos_group_session_campus_program_of_study1" table="cpos_group" schema="" catalog="us_admission_v2" columns="campus_program_of_study_id"/>
+      <exported-key name="fk_j_pos_part_campus_program_of_study1" table="j_pos_part" schema="" catalog="us_admission_v2" columns="campus_program_of_study_id"/>
+      <exported-key name="fk_other_test_campus_program_of_study1" table="other_test" schema="" catalog="us_admission_v2" columns="campus_program_of_study_id"/>
+      <index name="fk_campus_program_of_study_campus1_idx" unique="false" columns="campus_id"/>
+      <index name="fk_campus_program_of_study_program_of_study1_idx" unique="false" columns="program_of_study_id"/>
+      <index name="fk_campus_program_of_study_session1_idx" unique="false" columns="shift_id"/>
+    </table>
+    <table name="candidate" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="candidate_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="district_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="country_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="religion_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="program_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="admission_year_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="test_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="seat_no" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="form_sno" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="cnic_no" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cnic_of" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fathers_name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="surname" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="gender" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="area" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="date_of_birth" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="place_of_birth" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="permanent_home_address" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="present_postel_address" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="guardians_name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="relationship" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="guardians_address" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="fathers_occupation" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="telephone" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="mobile" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="chalan_fee" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="QWRtaXNzaW9uIEZvcm0gKyBFbnRyYW5jZSBUZXN0IEZlZTogQ2hhbGFuIGZlZTo="/>
+      <column name="chalan_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="years_degree" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="image" sqlType="MEDIUMBLOB" precision="16777215" scale="0" nullable="true" jdbcType="-4"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="test_score" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="percentage" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="deduction_marks" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="is_objection" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <column name="objection_remarks" sqlType="VARCHAR" precision="256" scale="0" nullable="true" jdbcType="12"/>
+      <column name="image_path" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="lock" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="family_mobile" sqlType="VARCHAR" precision="11" scale="0" nullable="false" jdbcType="12"/>
+      <column name="bank_branch_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="print_form_date_time" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="candidate_id"/>
+      <foreign-key name="fk_candidate_admission_year1" columns="admission_year_id" ref-table="admission_year" ref-schema="" ref-catalog="us_admission_v2" ref-columns="admission_year_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_candidate_country1" columns="country_id" ref-table="country" ref-schema="" ref-catalog="us_admission_v2" ref-columns="country_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_candidate_district1" columns="district_id" ref-table="district" ref-schema="" ref-catalog="us_admission_v2" ref-columns="district_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_candidate_program_type1" columns="program_type_id" ref-table="program_type" ref-schema="" ref-catalog="us_admission_v2" ref-columns="program_type_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_candidate_religion1" columns="religion_id" ref-table="religion" ref-schema="" ref-catalog="us_admission_v2" ref-columns="religion_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_candidate_test1" columns="test_id" ref-table="test" ref-schema="" ref-catalog="us_admission_v2" ref-columns="test_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_account_candidate1" table="accounts" schema="" catalog="us_admission_v2" columns="candidate_id"/>
+      <exported-key name="fk_merit_candidate1" table="admission_list_details" schema="" catalog="us_admission_v2" columns="candidate_id"/>
+      <exported-key name="fk_applied_campus_candidate1" table="applied_campus" schema="" catalog="us_admission_v2" columns="candidate_id"/>
+      <exported-key name="fk_applied_category_candidate1" table="applied_category" schema="" catalog="us_admission_v2" columns="candidate_id"/>
+      <exported-key name="fk_program_choice_candidate1" table="candidate_program_of_study" schema="" catalog="us_admission_v2" columns="candidate_id"/>
+      <exported-key name="fk_crendential_details_candidate1" table="credential_details" schema="" catalog="us_admission_v2" columns="candidate_id"/>
+      <exported-key name="fk_for_foreign_candidate1" table="foreign_candidate" schema="" catalog="us_admission_v2" columns="candidate_id"/>
+      <exported-key name="FK_online_candidate_picture_1" table="online_candidate_picture" schema="" catalog="us_admission_v2" columns="candidate_id"/>
+      <exported-key name="fk_other_test_candidate1" table="other_test" schema="" catalog="us_admission_v2" columns="candidate_id"/>
+      <index name="fk_candidate_admission_year1_idx" unique="false" columns="admission_year_id"/>
+      <index name="fk_candidate_country1_idx" unique="false" columns="country_id"/>
+      <index name="fk_candidate_district1_idx" unique="false" columns="district_id"/>
+      <index name="fk_candidate_program_type1_idx" unique="false" columns="program_type_id"/>
+      <index name="fk_candidate_religion1_idx" unique="false" columns="religion_id"/>
+      <index name="fk_candidate_test1_idx" unique="false" columns="test_id"/>
+    </table>
+    <table name="candidate_program_of_study" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="candidate_program_of_study_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="candidate_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="campus_program_of_study_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="choice_no" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="is_recommend" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="candidate_program_of_study_id"/>
+      <foreign-key name="fk_candidate_program_of_study_campus_program_of_study1" columns="campus_program_of_study_id" ref-table="campus_program_of_study" ref-schema="" ref-catalog="us_admission_v2" ref-columns="campus_program_of_study_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_program_choice_candidate1" columns="candidate_id" ref-table="candidate" ref-schema="" ref-catalog="us_admission_v2" ref-columns="candidate_id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <exported-key name="fk_admission_list_details_candidate_program_of_study1" table="admission_list_details" schema="" catalog="us_admission_v2" columns="candidate_program_of_study_id"/>
+      <index name="fk_candidate_program_of_study_campus_program_of_study1_idx" unique="false" columns="campus_program_of_study_id"/>
+      <index name="fk_program_choice_candidate1_idx" unique="false" columns="candidate_id"/>
+    </table>
+    <table name="category" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="category_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="category_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="code" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="p_code" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="remarks" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="category_id"/>
+      <foreign-key name="fk_category_category_type1" columns="category_type_id" ref-table="category_type" ref-schema="" ref-catalog="us_admission_v2" ref-columns="category_type_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_campus_category_category1" table="campus_category" schema="" catalog="us_admission_v2" columns="category_id"/>
+      <index name="fk_category_category_type1_idx" unique="false" columns="category_type_id"/>
+    </table>
+    <table name="category_type" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="category_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="code" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" def="Jz09Jw=="/>
+      <primary-key name="PRIMARY" columns="category_type_id"/>
+      <exported-key name="fk_category_category_type1" table="category" schema="" catalog="us_admission_v2" columns="category_type_id"/>
+    </table>
+    <table name="country" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="country_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="code" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nationality" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="country_id"/>
+      <exported-key name="fk_candidate_country1" table="candidate" schema="" catalog="us_admission_v2" columns="country_id"/>
+    </table>
+    <table name="cpos_group" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="cpos_group_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="campus_program_of_study_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="group_" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="code" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="group_code" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="cpos_group_id"/>
+      <foreign-key name="fk_pos_group_session_campus_program_of_study1" columns="campus_program_of_study_id" ref-table="campus_program_of_study" ref-schema="" ref-catalog="us_admission_v2" ref-columns="campus_program_of_study_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_admission_list_details_cpos_group1" table="admission_list_details" schema="" catalog="us_admission_v2" columns="cpos_group_id"/>
+      <exported-key name="fk_discipline_category_seats_pos_group_session1" table="discipline_category_seats" schema="" catalog="us_admission_v2" columns="cpos_group_id"/>
+      <index name="fk_pos_group_session_campus_program_of_study1_idx" unique="false" columns="campus_program_of_study_id"/>
+    </table>
+    <table name="credential_details" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="credential_details_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="candidate_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="issuer_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="total_marks" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="marks_obtained" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="group_" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="seat_no" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12"/>
+      <column name="passing_year" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="detail_of" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="program_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="credential_details_id"/>
+      <foreign-key name="fk_credential_details_issuer1" columns="issuer_id" ref-table="issuer" ref-schema="" ref-catalog="us_admission_v2" ref-columns="issuer_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_credential_details_program1" columns="program_id" ref-table="program" ref-schema="" ref-catalog="us_admission_v2" ref-columns="program_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_crendential_details_candidate1" columns="candidate_id" ref-table="candidate" ref-schema="" ref-catalog="us_admission_v2" ref-columns="candidate_id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <exported-key name="fk_optional_subject_credential_details1" table="optional_subject" schema="" catalog="us_admission_v2" columns="credential_details_id"/>
+      <index name="fk_credential_details_issuer1_idx" unique="false" columns="issuer_id"/>
+      <index name="FK_credential_details_program1" unique="false" columns="program_id"/>
+      <index name="fk_crendential_details_candidate1_idx" unique="false" columns="candidate_id"/>
+    </table>
+    <table name="department" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="department_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="dept_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="faculty_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="department_id"/>
+      <foreign-key name="fk_department_dept_type1" columns="dept_type_id" ref-table="dept_type" ref-schema="" ref-catalog="us_admission_v2" ref-columns="dept_type_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_department_faculty1" columns="faculty_id" ref-table="faculty" ref-schema="" ref-catalog="us_admission_v2" ref-columns="faculty_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_disciplane_department1" table="discipline" schema="" catalog="us_admission_v2" columns="department_id"/>
+      <index name="fk_department_dept_type1_idx" unique="false" columns="dept_type_id"/>
+      <index name="fk_department_faculty1_idx" unique="false" columns="faculty_id"/>
+    </table>
+    <table name="dept_type" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="dept_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="dept_type_id"/>
+      <exported-key name="fk_department_dept_type1" table="department" schema="" catalog="us_admission_v2" columns="dept_type_id"/>
+    </table>
+    <table name="discipline" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="discipline_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="department_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="code" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="discipline_id"/>
+      <foreign-key name="fk_disciplane_department1" columns="department_id" ref-table="department" ref-schema="" ref-catalog="us_admission_v2" ref-columns="department_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_study_program_disciplane1" table="program_of_study" schema="" catalog="us_admission_v2" columns="discipline_id"/>
+      <exported-key name="fk_subject_discipline1" table="subject" schema="" catalog="us_admission_v2" columns="discipline_id"/>
+      <index name="fk_disciplane_department1_idx" unique="false" columns="department_id"/>
+    </table>
+    <table name="discipline_category_seats" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="discipline_category_seats_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="campus_category_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="admission_session_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="number_of_seats" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cpos_group_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="discipline_category_seats_id"/>
+      <foreign-key name="fk_discipline_category_seats_admission_session1" columns="admission_session_id" ref-table="admission_session" ref-schema="" ref-catalog="us_admission_v2" ref-columns="admission_session_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_discipline_category_seats_campus_category1" columns="campus_category_id" ref-table="campus_category" ref-schema="" ref-catalog="us_admission_v2" ref-columns="campus_category_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_discipline_category_seats_pos_group_session1" columns="cpos_group_id" ref-table="cpos_group" ref-schema="" ref-catalog="us_admission_v2" ref-columns="cpos_group_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_discipline_category_seats_admission_session1_idx" unique="false" columns="admission_session_id"/>
+      <index name="fk_discipline_category_seats_campus_category1_idx" unique="false" columns="campus_category_id"/>
+      <index name="fk_discipline_category_seats_pos_group_session1_idx" unique="false" columns="cpos_group_id"/>
+    </table>
+    <table name="district" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="district_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="division_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="district_id"/>
+      <foreign-key name="fk_district_division1" columns="division_id" ref-table="division" ref-schema="" ref-catalog="us_admission_v2" ref-columns="division_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_candidate_district1" table="candidate" schema="" catalog="us_admission_v2" columns="district_id"/>
+      <exported-key name="fk_jurisidction_district1" table="jurisdiction" schema="" catalog="us_admission_v2" columns="district_id"/>
+      <exported-key name="fk_taluka_district" table="taluka" schema="" catalog="us_admission_v2" columns="district_id"/>
+      <index name="fk_district_division1_idx" unique="false" columns="division_id"/>
+    </table>
+    <table name="district_seat_distribution" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="district_seat_distribution_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="jurisdiction_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="shift_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="admission_year_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="urban" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="rural" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="other" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="district_seat_distribution_id"/>
+      <foreign-key name="fk_district_seat_distribution_admission_year1" columns="admission_year_id" ref-table="admission_year" ref-schema="" ref-catalog="us_admission_v2" ref-columns="admission_year_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_district_seat_distribution_jurisdiction1" columns="jurisdiction_id" ref-table="jurisdiction" ref-schema="" ref-catalog="us_admission_v2" ref-columns="jurisdiction_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_district_seat_distribution_shift1" columns="shift_id" ref-table="shift" ref-schema="" ref-catalog="us_admission_v2" ref-columns="shift_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_district_seat_distribution_admission_year1_idx" unique="false" columns="admission_year_id"/>
+      <index name="fk_district_seat_distribution_jurisdiction1_idx" unique="false" columns="jurisdiction_id"/>
+      <index name="fk_district_seat_distribution_shift1_idx" unique="false" columns="shift_id"/>
+    </table>
+    <table name="division" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="division_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="province_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="division_id"/>
+      <foreign-key name="fk_division_province1" columns="province_id" ref-table="province" ref-schema="" ref-catalog="us_admission_v2" ref-columns="province_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_district_division1" table="district" schema="" catalog="us_admission_v2" columns="division_id"/>
+      <index name="fk_division_province1_idx" unique="false" columns="province_id"/>
+    </table>
+    <table name="faculty" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="faculty_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="display_order" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="faculty_id"/>
+      <exported-key name="fk_department_faculty1" table="department" schema="" catalog="us_admission_v2" columns="faculty_id"/>
+      <exported-key name="fk_fee_faculty1" table="fee" schema="" catalog="us_admission_v2" columns="faculty_id"/>
+    </table>
+    <table name="fee" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="fee_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="faculty_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="program_of_study_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="program_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="admission_session_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="part_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="fee_type" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12"/>
+      <column name="admission_fee" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="id_card_fee" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="enrolment_fee" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="caution_money" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="sports_fee" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="shuttle_bus_service" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="extra_ca_fee" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="marks_cv_fee" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="library_dev_fund" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="laboratory_user_charges" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="uni_dev_funds" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bus_fare" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="reg_with_pharmacy_council" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="tution_fee" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="exam_fee" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="total_merit_fee" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="sindh_self_finance_fee" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="total_sindh_self_finanace_fee" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="other_pro_self_finance_fee" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="total_other_pro_self_finanace_fee" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="foreigner_admission_fee" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="full_package_inc_eligibility" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="total_foreigner_fee" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="currency" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="fee_id"/>
+      <foreign-key name="fk_fee_admission_session1" columns="admission_session_id" ref-table="admission_session" ref-schema="" ref-catalog="us_admission_v2" ref-columns="admission_session_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_fee_faculty1" columns="faculty_id" ref-table="faculty" ref-schema="" ref-catalog="us_admission_v2" ref-columns="faculty_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_fee_part1" columns="part_id" ref-table="part" ref-schema="" ref-catalog="us_admission_v2" ref-columns="part_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_fee_program1" columns="program_id" ref-table="program" ref-schema="" ref-catalog="us_admission_v2" ref-columns="program_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_fee_program_of_study1" columns="program_of_study_id" ref-table="program_of_study" ref-schema="" ref-catalog="us_admission_v2" ref-columns="program_of_study_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_fee_admission_session1_idx" unique="false" columns="admission_session_id"/>
+      <index name="fk_fee_faculty1_idx" unique="false" columns="faculty_id"/>
+      <index name="fk_fee_part1_idx" unique="false" columns="part_id"/>
+      <index name="fk_fee_program1_idx" unique="false" columns="program_id"/>
+      <index name="fk_fee_program_of_study1_idx" unique="false" columns="program_of_study_id"/>
+    </table>
+    <table name="foreign_candidate" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="foreign_candidate_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="candidate_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="passport_no" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="place_of_issue" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="dated" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="visa_no" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="visa_no_dated" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="date_of_validity" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="arrival_date_in_pakistan" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="foreign_candidate_id"/>
+      <foreign-key name="fk_for_foreign_candidate1" columns="candidate_id" ref-table="candidate" ref-schema="" ref-catalog="us_admission_v2" ref-columns="candidate_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_for_foreign_candidate1_idx" unique="false" columns="candidate_id"/>
+    </table>
+    <table name="issuer" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="issuer_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="location" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="acronym" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="address" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="is_board" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="code" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="is_jurisdiction" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="issuer_id"/>
+      <exported-key name="fk_credential_details_issuer1" table="credential_details" schema="" catalog="us_admission_v2" columns="issuer_id"/>
+    </table>
+    <table name="j_candidate_challan" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="admission_list_details_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="amount" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="challa_code" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="remarks" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="j_fee_structure_campus_category_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="j_fee_structure_admission_year_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="j_fee_structure_j_pos_part_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="admission_list_details_id,j_fee_structure_campus_category_id,j_fee_structure_admission_year_id,j_fee_structure_j_pos_part_id"/>
+      <foreign-key name="fk_j_candidate_challan_admission_list_details1" columns="admission_list_details_id" ref-table="admission_list_details" ref-schema="" ref-catalog="us_admission_v2" ref-columns="admission_list_details_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_j_candidate_challan_j_fee_structure1" columns="j_fee_structure_campus_category_id,j_fee_structure_admission_year_id,j_fee_structure_j_pos_part_id" ref-table="j_fee_structure" ref-schema="" ref-catalog="us_admission_v2" ref-columns="campus_category_id,admission_year_id,j_pos_part_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_j_candidate_challan_admission_list_details1_idx" unique="false" columns="admission_list_details_id"/>
+      <index name="fk_j_candidate_challan_j_fee_structure1_idx" unique="false" columns="j_fee_structure_campus_category_id,j_fee_structure_admission_year_id,j_fee_structure_j_pos_part_id"/>
+    </table>
+    <table name="j_fee_structure" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="campus_category_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="admission_year_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="fee_amount" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="remarks" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="j_pos_part_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="campus_category_id,admission_year_id,j_pos_part_id"/>
+      <foreign-key name="fk_j_fee_structure_admission_year1" columns="admission_year_id" ref-table="admission_year" ref-schema="" ref-catalog="us_admission_v2" ref-columns="admission_year_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_j_fee_structure_campus_category1" columns="campus_category_id" ref-table="campus_category" ref-schema="" ref-catalog="us_admission_v2" ref-columns="campus_category_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_j_fee_structure_j_pos_part1" columns="j_pos_part_id" ref-table="j_pos_part" ref-schema="" ref-catalog="us_admission_v2" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_j_candidate_challan_j_fee_structure1" table="j_candidate_challan" schema="" catalog="us_admission_v2" columns="j_fee_structure_campus_category_id,j_fee_structure_admission_year_id,j_fee_structure_j_pos_part_id"/>
+      <index name="fk_j_fee_structure_admission_year1_idx" unique="false" columns="admission_year_id"/>
+      <index name="fk_j_fee_structure_campus_category1_idx" unique="false" columns="campus_category_id"/>
+      <index name="fk_j_fee_structure_j_pos_part1_idx" unique="false" columns="j_pos_part_id"/>
+    </table>
+    <table name="j_pos_part" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="part" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="remarks" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="campus_program_of_study_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_j_pos_part_campus_program_of_study1" columns="campus_program_of_study_id" ref-table="campus_program_of_study" ref-schema="" ref-catalog="us_admission_v2" ref-columns="campus_program_of_study_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_j_fee_structure_j_pos_part1" table="j_fee_structure" schema="" catalog="us_admission_v2" columns="j_pos_part_id"/>
+      <index name="fk_j_pos_part_campus_program_of_study1_idx" unique="false" columns="campus_program_of_study_id"/>
+    </table>
+    <table name="jurisdiction" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="jurisdiction_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="campus_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="district_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="taluka_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="is_jurisdiction" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="jurisdiction_id"/>
+      <foreign-key name="fk_jurisdiction_taluka1" columns="taluka_id" ref-table="taluka" ref-schema="" ref-catalog="us_admission_v2" ref-columns="taluka_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_jurisidction_campus1" columns="campus_id" ref-table="campus" ref-schema="" ref-catalog="us_admission_v2" ref-columns="campus_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_jurisidction_district1" columns="district_id" ref-table="district" ref-schema="" ref-catalog="us_admission_v2" ref-columns="district_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_district_seat_distribution_jurisdiction1" table="district_seat_distribution" schema="" catalog="us_admission_v2" columns="jurisdiction_id"/>
+      <index name="fk_jurisdiction_taluka1_idx" unique="false" columns="taluka_id"/>
+      <index name="fk_jurisidction_campus1_idx" unique="false" columns="campus_id"/>
+      <index name="fk_jurisidction_district1_idx" unique="false" columns="district_id"/>
+    </table>
+    <table name="master_group" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="gender" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="master_seat_no" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="group_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="seat_no" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="remarks" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="online_candidate_picture" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="candidate_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="pic" sqlType="BLOB" precision="65535" scale="0" nullable="false" jdbcType="-4"/>
+      <column name="content_type" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="size" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="candidate_id"/>
+      <foreign-key name="FK_online_candidate_picture_1" columns="candidate_id" ref-table="candidate" ref-schema="" ref-catalog="us_admission_v2" ref-columns="candidate_id" update-rule="3" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="online_card" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="username" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="candidate_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="username"/>
+      <index name="FK_online_card_candidate_id" unique="false" columns="candidate_id"/>
+    </table>
+    <table name="online_slip_issuer" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="username" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="is_super" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="username" unique="true" columns="username"/>
+    </table>
+    <table name="optional_subject" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="optional_subject_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="credential_details_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="subject_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="optional_subject_id"/>
+      <foreign-key name="fk_optional_subject_credential_details1" columns="credential_details_id" ref-table="credential_details" ref-schema="" ref-catalog="us_admission_v2" ref-columns="credential_details_id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="fk_optional_subject_subject1" columns="subject_id" ref-table="subject" ref-schema="" ref-catalog="us_admission_v2" ref-columns="subject_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_optional_subject_credential_details1_idx" unique="false" columns="credential_details_id"/>
+      <index name="fk_optional_subject_subject1_idx" unique="false" columns="subject_id"/>
+    </table>
+    <table name="other_test" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="other_test_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="candidate_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="campus_program_of_study_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="score" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="choice_no" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="other_test_id"/>
+      <foreign-key name="fk_other_test_campus_program_of_study1" columns="campus_program_of_study_id" ref-table="campus_program_of_study" ref-schema="" ref-catalog="us_admission_v2" ref-columns="campus_program_of_study_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_other_test_candidate1" columns="candidate_id" ref-table="candidate" ref-schema="" ref-catalog="us_admission_v2" ref-columns="candidate_id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="fk_other_test_campus_program_of_study1_idx" unique="false" columns="campus_program_of_study_id"/>
+      <index name="fk_other_test_candidate1_idx" unique="false" columns="candidate_id"/>
+    </table>
+    <table name="part" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="part_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="part_no" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="program_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="part_id"/>
+      <foreign-key name="fk_program_type_id1" columns="program_type_id" ref-table="program_type" ref-schema="" ref-catalog="us_admission_v2" ref-columns="program_type_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_fee_part1" table="fee" schema="" catalog="us_admission_v2" columns="part_id"/>
+      <exported-key name="fk_part_registry_part1" table="part_registry" schema="" catalog="us_admission_v2" columns="part_id"/>
+      <index name="program_type_Index_2" unique="false" columns="program_type_id"/>
+    </table>
+    <table name="part_registry" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="part_registry_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="account_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="admission_list_details_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="part_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="challan_no" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="amount" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="challan_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="type" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="remarks" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="part_registry_id"/>
+      <foreign-key name="fk_part_registry_account1" columns="account_id" ref-table="accounts" ref-schema="" ref-catalog="us_admission_v2" ref-columns="account_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_part_registry_admission_list_details1" columns="admission_list_details_id" ref-table="admission_list_details" ref-schema="" ref-catalog="us_admission_v2" ref-columns="admission_list_details_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_part_registry_part1" columns="part_id" ref-table="part" ref-schema="" ref-catalog="us_admission_v2" ref-columns="part_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_part_registry_account1_idx" unique="false" columns="account_id"/>
+      <index name="fk_part_registry_admission_list_details1_idx" unique="false" columns="admission_list_details_id"/>
+      <index name="fk_part_registry_part1_idx" unique="false" columns="part_id"/>
+    </table>
+    <table name="prerequisite" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="prerequisite_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="program_of_study_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="program_subject_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="percentage" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="prerequisite_id"/>
+      <foreign-key name="fk_prerequisite_program_of_study1" columns="program_of_study_id" ref-table="program_of_study" ref-schema="" ref-catalog="us_admission_v2" ref-columns="program_of_study_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_prerequisite_program_subject1" columns="program_subject_id" ref-table="program_subject" ref-schema="" ref-catalog="us_admission_v2" ref-columns="program_subject_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_prerequisite_program_of_study1_idx" unique="false" columns="program_of_study_id"/>
+      <index name="fk_prerequisite_program_subject1_idx" unique="false" columns="program_subject_id"/>
+    </table>
+    <table name="program" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="program_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="program_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="is_discipline" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="periods" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="level" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="Mg=="/>
+      <primary-key name="PRIMARY" columns="program_id"/>
+      <foreign-key name="fk_program_program_type1" columns="program_type_id" ref-table="program_type" ref-schema="" ref-catalog="us_admission_v2" ref-columns="program_type_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_credential_details_program1" table="credential_details" schema="" catalog="us_admission_v2" columns="program_id"/>
+      <exported-key name="fk_fee_program1" table="fee" schema="" catalog="us_admission_v2" columns="program_id"/>
+      <exported-key name="fk_program_of_study_program1" table="program_of_study" schema="" catalog="us_admission_v2" columns="program_id"/>
+      <exported-key name="fk_program_subject_program1" table="program_subject" schema="" catalog="us_admission_v2" columns="program_id"/>
+      <index name="fk_program_program_type1_idx" unique="false" columns="program_type_id"/>
+    </table>
+    <table name="program_of_study" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="program_of_study_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="program_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="discipline_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="p_code" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="duration" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="semester" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="is_quota_oriented" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="code" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="program_of_study_id"/>
+      <foreign-key name="fk_program_of_study_program1" columns="program_id" ref-table="program" ref-schema="" ref-catalog="us_admission_v2" ref-columns="program_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_study_program_disciplane1" columns="discipline_id" ref-table="discipline" ref-schema="" ref-catalog="us_admission_v2" ref-columns="discipline_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_campus_program_of_study_program_of_study1" table="campus_program_of_study" schema="" catalog="us_admission_v2" columns="program_of_study_id"/>
+      <exported-key name="fk_fee_program_of_study1" table="fee" schema="" catalog="us_admission_v2" columns="program_of_study_id"/>
+      <exported-key name="fk_prerequisite_program_of_study1" table="prerequisite" schema="" catalog="us_admission_v2" columns="program_of_study_id"/>
+      <index name="fk_program_of_study_program1_idx" unique="false" columns="program_id"/>
+      <index name="fk_study_program_disciplane1_idx" unique="false" columns="discipline_id"/>
+    </table>
+    <table name="program_subject" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="program_subject_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="program_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="subject_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="program_subject_id"/>
+      <foreign-key name="fk_program_subject_program1" columns="program_id" ref-table="program" ref-schema="" ref-catalog="us_admission_v2" ref-columns="program_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_program_subject_subject1" columns="subject_id" ref-table="subject" ref-schema="" ref-catalog="us_admission_v2" ref-columns="subject_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_prerequisite_program_subject1" table="prerequisite" schema="" catalog="us_admission_v2" columns="program_subject_id"/>
+      <index name="fk_program_subject_program1_idx" unique="false" columns="program_id"/>
+      <index name="fk_program_subject_subject1_idx" unique="false" columns="subject_id"/>
+    </table>
+    <table name="program_type" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="program_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="is_bachelor" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="program_type_id"/>
+      <exported-key name="fk_admission_session_program_type1" table="admission_session" schema="" catalog="us_admission_v2" columns="program_type_id"/>
+      <exported-key name="fk_program_type" table="campus_category" schema="" catalog="us_admission_v2" columns="program_type_id"/>
+      <exported-key name="fk_candidate_program_type1" table="candidate" schema="" catalog="us_admission_v2" columns="program_type_id"/>
+      <exported-key name="fk_program_type_id1" table="part" schema="" catalog="us_admission_v2" columns="program_type_id"/>
+      <exported-key name="fk_program_program_type1" table="program" schema="" catalog="us_admission_v2" columns="program_type_id"/>
+      <exported-key name="fk_test_program_type1" table="test" schema="" catalog="us_admission_v2" columns="program_type_id"/>
+    </table>
+    <table name="province" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="province_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="code" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="province_id"/>
+      <exported-key name="fk_division_province1" table="division" schema="" catalog="us_admission_v2" columns="province_id"/>
+    </table>
+    <table name="religion" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="religion_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="religion_id"/>
+      <exported-key name="fk_candidate_religion1" table="candidate" schema="" catalog="us_admission_v2" columns="religion_id"/>
+    </table>
+    <table name="shift" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="shift_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="is_morning" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="shift_id"/>
+      <exported-key name="FK_shift_id" table="campus_category" schema="" catalog="us_admission_v2" columns="shift_id"/>
+      <exported-key name="fk_campus_program_of_study_shift1" table="campus_program_of_study" schema="" catalog="us_admission_v2" columns="shift_id"/>
+      <exported-key name="fk_district_seat_distribution_shift1" table="district_seat_distribution" schema="" catalog="us_admission_v2" columns="shift_id"/>
+    </table>
+    <table name="subject" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="subject_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="discipline_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="128" scale="0" nullable="true" jdbcType="12"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="is_none" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="subject_id"/>
+      <foreign-key name="fk_subject_discipline1" columns="discipline_id" ref-table="discipline" ref-schema="" ref-catalog="us_admission_v2" ref-columns="discipline_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_optional_subject_subject1" table="optional_subject" schema="" catalog="us_admission_v2" columns="subject_id"/>
+      <exported-key name="fk_program_subject_subject1" table="program_subject" schema="" catalog="us_admission_v2" columns="subject_id"/>
+      <index name="fk_subject_discipline1_idx" unique="false" columns="discipline_id"/>
+    </table>
+    <table name="taluka" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="taluka_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="district_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="taluka_id"/>
+      <foreign-key name="fk_taluka_district" columns="district_id" ref-table="district" ref-schema="" ref-catalog="us_admission_v2" ref-columns="district_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_jurisdiction_taluka1" table="jurisdiction" schema="" catalog="us_admission_v2" columns="taluka_id"/>
+      <index name="fk_taluka_district_idx" unique="false" columns="district_id"/>
+    </table>
+    <table name="test" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="test_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="admission_year_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="program_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="campus_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="time" sqlType="TIME" precision="8" scale="0" nullable="true" jdbcType="92"/>
+      <column name="remarks" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="test_id"/>
+      <foreign-key name="fk_test_admission_year1" columns="admission_year_id" ref-table="admission_year" ref-schema="" ref-catalog="us_admission_v2" ref-columns="admission_year_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_test_campus1" columns="campus_id" ref-table="campus" ref-schema="" ref-catalog="us_admission_v2" ref-columns="campus_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_test_program_type1" columns="program_type_id" ref-table="program_type" ref-schema="" ref-catalog="us_admission_v2" ref-columns="program_type_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_candidate_test1" table="candidate" schema="" catalog="us_admission_v2" columns="test_id"/>
+      <index name="fk_test_admission_year1_idx" unique="false" columns="admission_year_id"/>
+      <index name="fk_test_campus1_idx" unique="false" columns="campus_id"/>
+      <index name="fk_test_program_type1_idx" unique="false" columns="program_type_id"/>
+    </table>
+    <table name="yog_additional_fee" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="ADMISSION_YEAR_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="FEE_OF" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="FEE" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="REMARKS" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="yog_db_update" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="VERSION" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="MODIFIED_DATE" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="REMAKRS" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="yog_entity_privilege" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="USER_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="MODEL_NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MODEL_ID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="REMARKS" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+      <foreign-key name="fk_YOG_ENTITY_PRIVILEGE_YOG_USER1" columns="USER_ID" ref-table="yog_user" ref-schema="" ref-catalog="us_admission_v2" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_YOG_ENTITY_PRIVILEGE_YOG_USER1_idx" unique="false" columns="USER_ID"/>
+    </table>
+    <table name="yog_fee" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="ADMISSION_YEAR_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="FEE_CATEGORY_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="FEE_MODEL_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="AMOUNT" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="REMARKS" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+      <foreign-key name="fk_FEE_FEE_CATEGORY1" columns="FEE_CATEGORY_ID" ref-table="yog_fee_category" ref-schema="" ref-catalog="us_admission_v2" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_FEE_FEE_MODEL1" columns="FEE_MODEL_ID" ref-table="yog_fee_model" ref-schema="" ref-catalog="us_admission_v2" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_FEE_FEE_CATEGORY1_idx" unique="false" columns="FEE_CATEGORY_ID"/>
+      <index name="fk_FEE_FEE_MODEL1_idx" unique="false" columns="FEE_MODEL_ID"/>
+    </table>
+    <table name="yog_fee_category" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="SHIFT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="NAME" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PROGRAM_TYPE" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="SW4gUFJPR1JBTV9UWVBFIHRoZXJlIHdpbGwgZW51bSB2YWx1ZSBzdG9yZWQgaXRzIG5vdCBjb25uZWN0ZWQgd2l0aCBQUk9HUkFNX1RZUEUgdGFibGU="/>
+      <column name="CATEGORY_TYPE" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="CODE" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="DISPLAY_ORDER" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="REMARKS" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+      <exported-key name="fk_FEE_FEE_CATEGORY1" table="yog_fee" schema="" catalog="us_admission_v2" columns="FEE_CATEGORY_ID"/>
+    </table>
+    <table name="yog_fee_model" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="PROGRAM_TYPE" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="SHIFT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="CATEGORY_TYPE" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="AMOUNT_TYPE" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="REMARKS" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+      <exported-key name="fk_FEE_FEE_MODEL1" table="yog_fee" schema="" catalog="us_admission_v2" columns="FEE_MODEL_ID"/>
+      <exported-key name="fk_MODEL_MAPPING_FEE_MODEL" table="yog_model_mapping" schema="" catalog="us_admission_v2" columns="FEE_MODEL_ID"/>
+    </table>
+    <table name="yog_log" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="USER_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="MODEL_NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="MODEL_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="MODEL_ACTION" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="LOG_DATE" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="REMARKS" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+      <foreign-key name="fk_YOG_LOG_YOG_USER1" columns="USER_ID" ref-table="yog_user" ref-schema="" ref-catalog="us_admission_v2" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_YOG_LOG_YOG_USER1_idx" unique="false" columns="USER_ID"/>
+    </table>
+    <table name="yog_model_mapping" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="FEE_MODEL_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="MODEL_NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MODEL_ID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="REMARKS" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+      <foreign-key name="fk_MODEL_MAPPING_FEE_MODEL" columns="FEE_MODEL_ID" ref-table="yog_fee_model" ref-schema="" ref-catalog="us_admission_v2" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_MODEL_MAPPING_FEE_MODEL_idx" unique="false" columns="FEE_MODEL_ID"/>
+    </table>
+    <table name="yog_resources" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="USER_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="NAME" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CODE" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="REMARKS" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+      <foreign-key name="fk_YOG_PRIVILEDGE_YOG_USER1" columns="USER_ID" ref-table="yog_user" ref-schema="" ref-catalog="us_admission_v2" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_YOG_PRIVILEDGE_YOG_USER1_idx" unique="false" columns="USER_ID"/>
+    </table>
+    <table name="yog_temp_challan" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="ADMISSION_LIST_DETAILS_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="PART_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="CODE" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VALID_FROM" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="VALID_TO" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="STATUS" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <column name="REMARKS" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+      <index name="key_UNIQUE" unique="true" columns="CODE"/>
+    </table>
+    <table name="yog_user" schema="" catalog="us_admission_v2" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="FIRST_NAME" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LAST_NAME" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MOBILE_NO" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="USERNAME" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PASSWORD" sqlType="VARCHAR" precision="128" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TYPE" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12"/>
+      <column name="REMARKS" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DATE_OF_CREATED" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="STATUS" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+      <exported-key name="fk_YOG_ENTITY_PRIVILEGE_YOG_USER1" table="yog_entity_privilege" schema="" catalog="us_admission_v2" columns="USER_ID"/>
+      <exported-key name="fk_YOG_LOG_YOG_USER1" table="yog_log" schema="" catalog="us_admission_v2" columns="USER_ID"/>
+      <exported-key name="fk_YOG_PRIVILEDGE_YOG_USER1" table="yog_resources" schema="" catalog="us_admission_v2" columns="USER_ID"/>
+      <index name="USERNAME_UNIQUE" unique="true" columns="USERNAME"/>
+    </table>
+  </data-source>
+  <data-source name="MySQL - @localhost [2]" uuid="95824275-1be4-457b-941c-7b15aa6261bb">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="exam_original" uuid="4d9a24d1-dc36-4e15-a970-176a77efe4ec">
+    <database-info product="MySQL" version="5.6.11" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.2">
+      <schema id="1" name="exam_original"/>
+      <table id="2" parent="1" name="ac_scheme_detail"/>
+      <table id="3" parent="1" name="batch"/>
+      <table id="4" parent="1" name="conc_area"/>
+      <table id="5" parent="1" name="course_appear_in_exam"/>
+      <table id="6" parent="1" name="department"/>
+      <table id="7" parent="1" name="eul5_access_privs"/>
+      <table id="8" parent="1" name="eul5_app_params"/>
+      <table id="9" parent="1" name="eul5_dbh_nodes"/>
+      <table id="10" parent="1" name="eul5_eul_users"/>
+      <table id="11" parent="1" name="eul5_freq_units"/>
+      <table id="12" parent="1" name="eul5_fun_arguments"/>
+      <table id="13" parent="1" name="eul5_fun_ctgs"/>
+      <table id="14" parent="1" name="eul5_fun_fc_links"/>
+      <table id="15" parent="1" name="eul5_functions"/>
+      <table id="16" parent="1" name="eul5_gateways"/>
+      <table id="17" parent="1" name="eul5_hi_segments"/>
+      <table id="18" parent="1" name="eul5_hierarchies"/>
+      <table id="19" parent="1" name="eul5_sequences"/>
+      <table id="20" parent="1" name="eul5_versions"/>
+      <table id="21" parent="1" name="faculty"/>
+      <table id="22" parent="1" name="grade"/>
+      <table id="23" parent="1" name="imp_ledger"/>
+      <table id="24" parent="1" name="imp_seat_list"/>
+      <table id="25" parent="1" name="item_requisition"/>
+      <table id="26" parent="1" name="ledger"/>
+      <table id="27" parent="1" name="ledger_detail_summary"/>
+      <table id="28" parent="1" name="ledger_details"/>
+      <table id="29" parent="1" name="ledger_list_detail"/>
+      <table id="30" parent="1" name="ledger_semester"/>
+      <table id="31" parent="1" name="minor_details"/>
+      <table id="32" parent="1" name="minor_master"/>
+      <table id="33" parent="1" name="part"/>
+      <table id="34" parent="1" name="program"/>
+      <table id="35" parent="1" name="scheme"/>
+      <table id="36" parent="1" name="scheme_detail"/>
+      <table id="37" parent="1" name="scheme_part"/>
+      <table id="38" parent="1" name="scheme_semester"/>
+      <table id="39" parent="1" name="seat_list"/>
+      <table id="40" parent="1" name="seat_list_detail"/>
+      <table id="41" parent="1" name="sem_rule"/>
+      <table id="42" parent="1" name="student_part"/>
+      <table id="43" parent="1" name="student_registration"/>
+      <column id="44" parent="2" name="SCHEME_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="45" parent="2" name="SCHEME_PART">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="46" parent="2" name="AC_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="47" parent="2" name="COURSE_NO">
+        <mandatory>1</mandatory>
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="48" parent="2" name="COURSE_TITLE">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="49" parent="2" name="CR_HRS">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="50" parent="2" name="MAX_MARKS">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="51" parent="2" name="REMARKS">
+        <data-type>varchar(2)</data-type>
+      </column>
+      <column id="52" parent="2" name="SEMESTER">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="53" parent="2" name="IS_CREDITABLE">
+        <data-type>varchar(5)</data-type>
+      </column>
+      <key id="54" parent="2" name="PRIMARY">
+        <columns>SCHEME_ID
+SCHEME_PART
+AC_ID
+COURSE_NO</columns>
+        <primary>1</primary>
+      </key>
+      <column id="55" parent="3" name="BATCH_ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="56" parent="3" name="PROG_ID">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="57" parent="3" name="DEPT_ID">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="58" parent="3" name="RUL_ID">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="59" parent="3" name="YEAR">
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="60" parent="3" name="SHIFT">
+        <data-type>varchar(1)</data-type>
+      </column>
+      <column id="61" parent="3" name="REMARKS">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="62" parent="3" name="GROUP_DESC">
+        <data-type>varchar(4)</data-type>
+      </column>
+      <key id="63" parent="3" name="PRIMARY">
+        <columns>BATCH_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="64" parent="4" name="SCHEME_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="65" parent="4" name="SCHEME_PART">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="66" parent="4" name="AC_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="67" parent="4" name="TITLE">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="68" parent="4" name="DESCRIPTION">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="69" parent="4" name="REMARKS">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <key id="70" parent="4" name="PRIMARY">
+        <columns>SCHEME_ID
+SCHEME_PART
+AC_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="71" parent="5" name="SCHEME_ID">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="72" parent="5" name="SCHEME_PART">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="73" parent="5" name="AC_ID">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="74" parent="5" name="SL_ID">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="75" parent="5" name="SEMESTER">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="76" parent="5" name="COURSE_NO">
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="77" parent="5" name="BATCH_ID">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="78" parent="5" name="REMARKS">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="79" parent="6" name="DEPT_ID">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="80" parent="6" name="FAC_ID">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="81" parent="6" name="INST_ID">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="82" parent="6" name="DEPT_NAME">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="83" parent="6" name="IS_INST">
+        <data-type>varchar(1)</data-type>
+      </column>
+      <column id="84" parent="6" name="CODE">
+        <data-type>varchar(5)</data-type>
+      </column>
+      <column id="85" parent="6" name="REMARKS">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <key id="86" parent="6" name="PRIMARY">
+        <columns>DEPT_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="87" parent="7" name="AP_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="88" parent="7" name="AP_TYPE">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="89" parent="7" name="AP_EU_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="90" parent="7" name="AP_PRIV_LEVEL">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="91" parent="7" name="GP_APP_ID">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="92" parent="7" name="GBA_BA_ID">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="93" parent="7" name="GD_DOC_ID">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="94" parent="7" name="AP_ELEMENT_STATE">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="95" parent="7" name="AP_CREATED_BY">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="96" parent="7" name="AP_CREATED_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="97" parent="7" name="AP_UPDATED_BY">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="98" parent="7" name="AP_UPDATED_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="99" parent="7" name="NOTM">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <index id="100" parent="7" name="EUL5_AP_UK_1">
+        <columns>GP_APP_ID
+GBA_BA_ID
+GD_DOC_ID
+AP_EU_ID</columns>
+        <unique>1</unique>
+      </index>
+      <key id="101" parent="7" name="EUL5_AP_UK_1">
+        <columns>GP_APP_ID
+GBA_BA_ID
+GD_DOC_ID
+AP_EU_ID</columns>
+        <underlying-index>EUL5_AP_UK_1</underlying-index>
+      </key>
+      <key id="102" parent="7" name="PRIMARY">
+        <columns>AP_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="103" parent="8" name="APP_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="104" parent="8" name="APP_TYPE">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="105" parent="8" name="APP_NAME_MN">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="106" parent="8" name="APP_DESCRIPTION_MN">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="107" parent="8" name="SP_DEFAULT_VALUE">
+        <data-type>varchar(240)</data-type>
+      </column>
+      <column id="108" parent="8" name="SP_VALUE">
+        <data-type>varchar(240)</data-type>
+      </column>
+      <column id="109" parent="8" name="APP_ELEMENT_STATE">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="110" parent="8" name="APP_CREATED_BY">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="111" parent="8" name="APP_CREATED_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="112" parent="8" name="APP_UPDATED_BY">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="113" parent="8" name="APP_UPDATED_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="114" parent="8" name="NOTM">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <index id="115" parent="8" name="EUL5_APP_UK_1">
+        <columns>APP_NAME_MN</columns>
+        <unique>1</unique>
+      </index>
+      <key id="116" parent="8" name="EUL5_APP_UK_1">
+        <columns>APP_NAME_MN</columns>
+        <underlying-index>EUL5_APP_UK_1</underlying-index>
+      </key>
+      <key id="117" parent="8" name="PRIMARY">
+        <columns>APP_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="118" parent="9" name="DHN_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="119" parent="9" name="DHN_NAME">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="120" parent="9" name="DHN_DEVELOPER_KEY">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="121" parent="9" name="DHN_DESCRIPTION">
+        <data-type>varchar(240)</data-type>
+      </column>
+      <column id="122" parent="9" name="DHN_DATA_FMT_MSK">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="123" parent="9" name="DHN_DISP_FMT_MSK">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="124" parent="9" name="DHN_HI_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="125" parent="9" name="DHN_USER_PROP2">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="126" parent="9" name="DHN_USER_PROP1">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="127" parent="9" name="DHN_ELEMENT_STATE">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="128" parent="9" name="DHN_CREATED_BY">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="129" parent="9" name="DHN_CREATED_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="130" parent="9" name="DHN_UPDATED_BY">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="131" parent="9" name="DHN_UPDATED_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="132" parent="9" name="NOTM">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <index id="133" parent="9" name="EUL5_DHN_UK_1">
+        <columns>DHN_HI_ID
+DHN_DEVELOPER_KEY</columns>
+        <unique>1</unique>
+      </index>
+      <index id="134" parent="9" name="EUL5_DHN_UK_2">
+        <columns>DHN_HI_ID
+DHN_NAME</columns>
+        <unique>1</unique>
+      </index>
+      <key id="135" parent="9" name="EUL5_DHN_UK_1">
+        <columns>DHN_HI_ID
+DHN_DEVELOPER_KEY</columns>
+        <underlying-index>EUL5_DHN_UK_1</underlying-index>
+      </key>
+      <key id="136" parent="9" name="EUL5_DHN_UK_2">
+        <columns>DHN_HI_ID
+DHN_NAME</columns>
+        <underlying-index>EUL5_DHN_UK_2</underlying-index>
+      </key>
+      <key id="137" parent="9" name="PRIMARY">
+        <columns>DHN_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="138" parent="10" name="EU_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="139" parent="10" name="EU_USERNAME">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="140" parent="10" name="EU_SECURITY_MODEL">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="141" parent="10" name="EU_USE_PUB_PRIVS">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="142" parent="10" name="EU_QUERY_TIME_LMT">
+        <data-type>double</data-type>
+      </column>
+      <column id="143" parent="10" name="EU_QUERY_EST_LMT">
+        <data-type>double</data-type>
+      </column>
+      <column id="144" parent="10" name="EU_ROW_FETCH_LMT">
+        <data-type>double</data-type>
+      </column>
+      <column id="145" parent="10" name="EU_ROLE_FLAG">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="146" parent="10" name="EU_BATCH_JOBS_LMT">
+        <data-type>double</data-type>
+      </column>
+      <column id="147" parent="10" name="EU_BATCH_WND_START">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="148" parent="10" name="EU_BATCH_WND_END">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="149" parent="10" name="EU_BATCH_QTIME_LMT">
+        <data-type>double</data-type>
+      </column>
+      <column id="150" parent="10" name="EU_BATCH_EXPIRY">
+        <data-type>double</data-type>
+      </column>
+      <column id="151" parent="10" name="EU_BATCH_CMT_SZ">
+        <data-type>double</data-type>
+      </column>
+      <column id="152" parent="10" name="EU_BATCH_REP_USER">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="153" parent="10" name="EU_LAST_BATCH_ACC">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="154" parent="10" name="EU_ELEMENT_STATE">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="155" parent="10" name="EU_CREATED_BY">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="156" parent="10" name="EU_CREATED_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="157" parent="10" name="EU_UPDATED_BY">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="158" parent="10" name="EU_UPDATED_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="159" parent="10" name="NOTM">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <index id="160" parent="10" name="EUL5_EU_UK_2">
+        <columns>EU_USERNAME</columns>
+        <unique>1</unique>
+      </index>
+      <key id="161" parent="10" name="EUL5_EU_UK_2">
+        <columns>EU_USERNAME</columns>
+        <underlying-index>EUL5_EU_UK_2</underlying-index>
+      </key>
+      <key id="162" parent="10" name="PRIMARY">
+        <columns>EU_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="163" parent="11" name="RFU_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="164" parent="11" name="RFU_NAME_MN">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="165" parent="11" name="RFU_SQL_EXPRESSION">
+        <mandatory>1</mandatory>
+        <data-type>varchar(240)</data-type>
+      </column>
+      <column id="166" parent="11" name="RFU_SEQUENCE">
+        <data-type>double</data-type>
+      </column>
+      <column id="167" parent="11" name="RFU_ELEMENT_STATE">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="168" parent="11" name="RFU_CREATED_BY">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="169" parent="11" name="RFU_CREATED_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="170" parent="11" name="RFU_UPDATED_BY">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="171" parent="11" name="RFU_UPDATED_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="172" parent="11" name="NOTM">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <index id="173" parent="11" name="EUL5_RFU_UK_1">
+        <columns>RFU_NAME_MN</columns>
+        <unique>1</unique>
+      </index>
+      <key id="174" parent="11" name="EUL5_RFU_UK_1">
+        <columns>RFU_NAME_MN</columns>
+        <underlying-index>EUL5_RFU_UK_1</underlying-index>
+      </key>
+      <key id="175" parent="11" name="PRIMARY">
+        <columns>RFU_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="176" parent="12" name="FA_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="177" parent="12" name="FA_NAME_S">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="178" parent="12" name="FA_NAME_MN">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="179" parent="12" name="FA_DEVELOPER_KEY">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="180" parent="12" name="FA_DESCRIPTION_S">
+        <data-type>varchar(240)</data-type>
+      </column>
+      <column id="181" parent="12" name="FA_DESCRIPTION_MN">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="182" parent="12" name="FA_DATA_TYPE">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="183" parent="12" name="FA_OPTIONAL">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="184" parent="12" name="FA_POSITION">
+        <mandatory>1</mandatory>
+        <data-type>double</data-type>
+      </column>
+      <column id="185" parent="12" name="FA_FUN_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="186" parent="12" name="FA_USER_PROP2">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="187" parent="12" name="FA_USER_PROP1">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="188" parent="12" name="FA_ELEMENT_STATE">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="189" parent="12" name="FA_CREATED_BY">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="190" parent="12" name="FA_CREATED_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="191" parent="12" name="FA_UPDATED_BY">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="192" parent="12" name="FA_UPDATED_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="193" parent="12" name="NOTM">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <index id="194" parent="12" name="EUL5_FA_UK_1">
+        <columns>FA_DEVELOPER_KEY
+FA_FUN_ID</columns>
+        <unique>1</unique>
+      </index>
+      <index id="195" parent="12" name="EUL5_FA_UK_2">
+        <columns>FA_POSITION
+FA_FUN_ID</columns>
+        <unique>1</unique>
+      </index>
+      <index id="196" parent="12" name="EUL5_FA_UK_3">
+        <columns>FA_NAME_MN
+FA_NAME_S
+FA_FUN_ID</columns>
+        <unique>1</unique>
+      </index>
+      <key id="197" parent="12" name="EUL5_FA_UK_1">
+        <columns>FA_DEVELOPER_KEY
+FA_FUN_ID</columns>
+        <underlying-index>EUL5_FA_UK_1</underlying-index>
+      </key>
+      <key id="198" parent="12" name="EUL5_FA_UK_2">
+        <columns>FA_POSITION
+FA_FUN_ID</columns>
+        <underlying-index>EUL5_FA_UK_2</underlying-index>
+      </key>
+      <key id="199" parent="12" name="EUL5_FA_UK_3">
+        <columns>FA_NAME_MN
+FA_NAME_S
+FA_FUN_ID</columns>
+        <underlying-index>EUL5_FA_UK_3</underlying-index>
+      </key>
+      <key id="200" parent="12" name="PRIMARY">
+        <columns>FA_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="201" parent="13" name="FC_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="202" parent="13" name="FC_NAME_S">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="203" parent="13" name="FC_NAME_MN">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="204" parent="13" name="FC_DEVELOPER_KEY">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="205" parent="13" name="FC_DESCRIPTION_S">
+        <data-type>varchar(240)</data-type>
+      </column>
+      <column id="206" parent="13" name="FC_DESCRIPTION_MN">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="207" parent="13" name="FC_USER_PROP2">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="208" parent="13" name="FC_USER_PROP1">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="209" parent="13" name="FC_ELEMENT_STATE">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="210" parent="13" name="FC_CREATED_BY">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="211" parent="13" name="FC_CREATED_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="212" parent="13" name="FC_UPDATED_BY">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="213" parent="13" name="FC_UPDATED_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="214" parent="13" name="NOTM">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <index id="215" parent="13" name="EUL5_FC_UK_1">
+        <columns>FC_DEVELOPER_KEY</columns>
+        <unique>1</unique>
+      </index>
+      <index id="216" parent="13" name="EUL5_FC_UK_2">
+        <columns>FC_NAME_MN
+FC_NAME_S</columns>
+        <unique>1</unique>
+      </index>
+      <key id="217" parent="13" name="EUL5_FC_UK_1">
+        <columns>FC_DEVELOPER_KEY</columns>
+        <underlying-index>EUL5_FC_UK_1</underlying-index>
+      </key>
+      <key id="218" parent="13" name="EUL5_FC_UK_2">
+        <columns>FC_NAME_MN
+FC_NAME_S</columns>
+        <underlying-index>EUL5_FC_UK_2</underlying-index>
+      </key>
+      <key id="219" parent="13" name="PRIMARY">
+        <columns>FC_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="220" parent="14" name="FFL_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="221" parent="14" name="FFL_FUN_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="222" parent="14" name="FFL_FC_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="223" parent="14" name="FFL_ELEMENT_STATE">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="224" parent="14" name="FFL_CREATED_BY">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="225" parent="14" name="FFL_CREATED_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="226" parent="14" name="FFL_UPDATED_BY">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="227" parent="14" name="FFL_UPDATED_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="228" parent="14" name="NOTM">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <index id="229" parent="14" name="EUL5_FFL_UK_1">
+        <columns>FFL_FUN_ID
+FFL_FC_ID</columns>
+        <unique>1</unique>
+      </index>
+      <key id="230" parent="14" name="EUL5_FFL_UK_1">
+        <columns>FFL_FUN_ID
+FFL_FC_ID</columns>
+        <underlying-index>EUL5_FFL_UK_1</underlying-index>
+      </key>
+      <key id="231" parent="14" name="PRIMARY">
+        <columns>FFL_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="232" parent="15" name="FUN_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="233" parent="15" name="FUN_NAME">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="234" parent="15" name="FUN_DEVELOPER_KEY">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="235" parent="15" name="FUN_DESCRIPTION_S">
+        <data-type>varchar(240)</data-type>
+      </column>
+      <column id="236" parent="15" name="FUN_DESCRIPTION_MN">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="237" parent="15" name="FUN_FUNCTION_TYPE">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="238" parent="15" name="FUN_HIDDEN">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="239" parent="15" name="FUN_DATA_TYPE">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="240" parent="15" name="FUN_AVAILABLE">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="241" parent="15" name="FUN_MAXIMUM_ARGS">
+        <data-type>double</data-type>
+      </column>
+      <column id="242" parent="15" name="FUN_MINIMUM_ARGS">
+        <mandatory>1</mandatory>
+        <data-type>double</data-type>
+      </column>
+      <column id="243" parent="15" name="FUN_BUILT_IN">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="244" parent="15" name="FUN_EXT_NAME">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="245" parent="15" name="FUN_EXT_PACKAGE">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="246" parent="15" name="FUN_EXT_OWNER">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="247" parent="15" name="FUN_EXT_DB_LINK">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="248" parent="15" name="FUN_USER_PROP2">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="249" parent="15" name="FUN_USER_PROP1">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="250" parent="15" name="FUN_ELEMENT_STATE">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="251" parent="15" name="FUN_CREATED_BY">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="252" parent="15" name="FUN_CREATED_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="253" parent="15" name="FUN_UPDATED_BY">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="254" parent="15" name="FUN_UPDATED_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="255" parent="15" name="NOTM">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <index id="256" parent="15" name="EUL5_FUN_UK_1">
+        <columns>FUN_DEVELOPER_KEY</columns>
+        <unique>1</unique>
+      </index>
+      <index id="257" parent="15" name="EUL5_FUN_UK_2">
+        <columns>FUN_NAME</columns>
+        <unique>1</unique>
+      </index>
+      <key id="258" parent="15" name="EUL5_FUN_UK_1">
+        <columns>FUN_DEVELOPER_KEY</columns>
+        <underlying-index>EUL5_FUN_UK_1</underlying-index>
+      </key>
+      <key id="259" parent="15" name="EUL5_FUN_UK_2">
+        <columns>FUN_NAME</columns>
+        <underlying-index>EUL5_FUN_UK_2</underlying-index>
+      </key>
+      <key id="260" parent="15" name="PRIMARY">
+        <columns>FUN_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="261" parent="16" name="GW_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="262" parent="16" name="GW_TYPE">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="263" parent="16" name="GW_GATEWAY_NAME">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="264" parent="16" name="GW_PRODUCT_NAME">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="265" parent="16" name="GW_DESCRIPTION">
+        <data-type>varchar(240)</data-type>
+      </column>
+      <column id="266" parent="16" name="EGW_VERSION">
+        <data-type>varchar(30)</data-type>
+      </column>
+      <column id="267" parent="16" name="EGW_DATABASE_LINK">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="268" parent="16" name="EGW_SCHEMA">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="269" parent="16" name="EGW_SQL_PARADIGM">
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="270" parent="16" name="GW_ELEMENT_STATE">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="271" parent="16" name="GW_CREATED_BY">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="272" parent="16" name="GW_CREATED_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="273" parent="16" name="GW_UPDATED_BY">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="274" parent="16" name="GW_UPDATED_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="275" parent="16" name="NOTM">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <key id="276" parent="16" name="PRIMARY">
+        <columns>GW_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="277" parent="17" name="HS_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="278" parent="17" name="HS_TYPE">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="279" parent="17" name="DHS_HI_ID">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="280" parent="17" name="DHS_DHN_ID_CHILD">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="281" parent="17" name="DHS_DHN_ID_PARENT">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="282" parent="17" name="IHS_HN_ID_CHILD">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="283" parent="17" name="IHS_HN_ID_PARENT">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="284" parent="17" name="IHS_HI_ID">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="285" parent="17" name="HS_ELEMENT_STATE">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="286" parent="17" name="HS_CREATED_BY">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="287" parent="17" name="HS_CREATED_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="288" parent="17" name="HS_UPDATED_BY">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="289" parent="17" name="HS_UPDATED_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="290" parent="17" name="NOTM">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <index id="291" parent="17" name="EUL5_HS_UK_1">
+        <columns>IHS_HN_ID_CHILD
+IHS_HN_ID_PARENT
+IHS_HI_ID
+DHS_HI_ID
+DHS_DHN_ID_CHILD
+DHS_DHN_ID_PARENT</columns>
+        <unique>1</unique>
+      </index>
+      <key id="292" parent="17" name="EUL5_HS_UK_1">
+        <columns>IHS_HN_ID_CHILD
+IHS_HN_ID_PARENT
+IHS_HI_ID
+DHS_HI_ID
+DHS_DHN_ID_CHILD
+DHS_DHN_ID_PARENT</columns>
+        <underlying-index>EUL5_HS_UK_1</underlying-index>
+      </key>
+      <key id="293" parent="17" name="PRIMARY">
+        <columns>HS_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="294" parent="18" name="HI_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="295" parent="18" name="HI_TYPE">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="296" parent="18" name="HI_NAME">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="297" parent="18" name="HI_DEVELOPER_KEY">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="298" parent="18" name="HI_DESCRIPTION">
+        <data-type>varchar(240)</data-type>
+      </column>
+      <column id="299" parent="18" name="HI_SYS_GENERATED">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="300" parent="18" name="HI_EXT_HIERARCHY">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="301" parent="18" name="DBH_DEFAULT">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="302" parent="18" name="IBH_DBH_ID">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="303" parent="18" name="HI_USER_PROP2">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="304" parent="18" name="HI_USER_PROP1">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="305" parent="18" name="HI_ELEMENT_STATE">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="306" parent="18" name="HI_CREATED_BY">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="307" parent="18" name="HI_CREATED_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="308" parent="18" name="HI_UPDATED_BY">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="309" parent="18" name="HI_UPDATED_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="310" parent="18" name="NOTM">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <index id="311" parent="18" name="EUL5_HI_UK_1">
+        <columns>HI_DEVELOPER_KEY</columns>
+        <unique>1</unique>
+      </index>
+      <index id="312" parent="18" name="EUL5_HI_UK_2">
+        <columns>HI_NAME</columns>
+        <unique>1</unique>
+      </index>
+      <key id="313" parent="18" name="EUL5_HI_UK_1">
+        <columns>HI_DEVELOPER_KEY</columns>
+        <underlying-index>EUL5_HI_UK_1</underlying-index>
+      </key>
+      <key id="314" parent="18" name="EUL5_HI_UK_2">
+        <columns>HI_NAME</columns>
+        <underlying-index>EUL5_HI_UK_2</underlying-index>
+      </key>
+      <key id="315" parent="18" name="PRIMARY">
+        <columns>HI_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="316" parent="19" name="SEQ_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="317" parent="19" name="SEQ_NAME">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="318" parent="19" name="SEQ_NEXTVAL">
+        <mandatory>1</mandatory>
+        <data-type>double</data-type>
+      </column>
+      <column id="319" parent="20" name="VER_NAME">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="320" parent="20" name="VER_DESCRIPTION">
+        <data-type>varchar(240)</data-type>
+      </column>
+      <column id="321" parent="20" name="VER_RELEASE">
+        <mandatory>1</mandatory>
+        <data-type>varchar(30)</data-type>
+      </column>
+      <column id="322" parent="20" name="VER_MIN_CODE_VER">
+        <mandatory>1</mandatory>
+        <data-type>varchar(30)</data-type>
+      </column>
+      <column id="323" parent="20" name="VER_EUL_TIMESTAMP">
+        <mandatory>1</mandatory>
+        <data-type>varchar(30)</data-type>
+      </column>
+      <column id="324" parent="20" name="VER_SA">
+        <data-type>double</data-type>
+      </column>
+      <column id="325" parent="21" name="FAC_ID">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="326" parent="21" name="FAC_NAME">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="327" parent="21" name="REMARKS">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <key id="328" parent="21" name="PRIMARY">
+        <columns>FAC_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="329" parent="22" name="GRADE">
+        <mandatory>1</mandatory>
+        <data-type>varchar(1)</data-type>
+      </column>
+      <column id="330" parent="22" name="VALUE">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="331" parent="22" name="MAX_MARKS">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="332" parent="22" name="MIN_MARKS">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="333" parent="22" name="REMARKS">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <key id="334" parent="22" name="PRIMARY">
+        <columns>GRADE</columns>
+        <primary>1</primary>
+      </key>
+      <column id="335" parent="23" name="SL_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="336" parent="23" name="ANN_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="337" parent="23" name="TOTAL_PASS">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="338" parent="23" name="TOTAL_FAIL">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="339" parent="23" name="TABULATOR_NAME">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="340" parent="23" name="CHECKER_NAME">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="341" parent="23" name="REMARKS">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <key id="342" parent="23" name="PRIMARY">
+        <columns>SL_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="343" parent="24" name="SL_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="344" parent="24" name="PROG_ID">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="345" parent="24" name="DEPT_ID">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="346" parent="24" name="PART">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="347" parent="24" name="TYPE">
+        <data-type>varchar(1)</data-type>
+      </column>
+      <column id="348" parent="24" name="SHIFT">
+        <data-type>varchar(1)</data-type>
+      </column>
+      <column id="349" parent="24" name="PART_GROUP">
+        <data-type>varchar(1)</data-type>
+      </column>
+      <column id="350" parent="24" name="PREP_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="351" parent="24" name="YEAR">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="352" parent="24" name="REMARKS">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <key id="353" parent="24" name="PRIMARY">
+        <columns>SL_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="354" parent="25" name="REQ_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="355" parent="25" name="SL_ID">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="356" parent="25" name="ROLL_NO">
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="357" parent="25" name="SL_TYPE">
+        <data-type>varchar(1)</data-type>
+      </column>
+      <column id="358" parent="25" name="CHALLAN_NO">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="359" parent="25" name="CHALLAN_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="360" parent="25" name="ITEM_ID">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="361" parent="25" name="REQ_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="362" parent="25" name="DELEIVERY_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="363" parent="25" name="ISSUED_CERT_NO">
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="364" parent="25" name="ISSUED_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="365" parent="25" name="REQ_STATUS">
+        <data-type>varchar(1)</data-type>
+      </column>
+      <column id="366" parent="25" name="ARCHIVE">
+        <data-type>varchar(1)</data-type>
+      </column>
+      <column id="367" parent="25" name="REMARKS">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <key id="368" parent="25" name="PRIMARY">
+        <columns>REQ_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="369" parent="26" name="SL_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="370" parent="26" name="SCHEME_ID">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="371" parent="26" name="SCHEME_PART">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="372" parent="26" name="ANN_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="373" parent="26" name="TOTAL_PASS">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="374" parent="26" name="TOTAL_FAIL">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="375" parent="26" name="REMARKS">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="376" parent="26" name="TABULATOR_NAME">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="377" parent="26" name="CHECKER_NAME">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="378" parent="26" name="IS_ANNOUNCED">
+        <data-type>varchar(1)</data-type>
+      </column>
+      <key id="379" parent="26" name="PRIMARY">
+        <columns>SL_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="380" parent="27" name="SL_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="381" parent="27" name="ROLL_NO">
+        <mandatory>1</mandatory>
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="382" parent="27" name="TOTAL_MARKS">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="383" parent="27" name="RESULT_REMARKS">
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="384" parent="27" name="PERCENTAGE">
+        <data-type>decimal(6,2)</data-type>
+      </column>
+      <column id="385" parent="27" name="INDV_RESULT_ANN_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="386" parent="27" name="CGPA">
+        <data-type>decimal(6,2)</data-type>
+      </column>
+      <column id="387" parent="27" name="OBTAIN_MARKS">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="388" parent="27" name="NO_DUES_REMARKS">
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="389" parent="27" name="PREV_PART">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="390" parent="27" name="PREV_ROLL_NO">
+        <data-type>varchar(18)</data-type>
+      </column>
+      <column id="391" parent="27" name="PREV_SL_ID">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="392" parent="27" name="PREV_RESULT_REMARKS">
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="393" parent="27" name="AC_II_NO">
+        <data-type>varchar(9)</data-type>
+      </column>
+      <column id="394" parent="27" name="AC_II_NO_DATED">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="395" parent="27" name="PREV_CGPA">
+        <data-type>decimal(6,2)</data-type>
+      </column>
+      <column id="396" parent="27" name="PREV_OBTAIN_MARKS">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="397" parent="27" name="PREV_PERCENTAGE">
+        <data-type>decimal(6,2)</data-type>
+      </column>
+      <column id="398" parent="27" name="PREV_TOTAL_MARKS">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="399" parent="27" name="PRE_YEAR">
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="400" parent="27" name="PRE_TYPE">
+        <data-type>varchar(1)</data-type>
+      </column>
+      <column id="401" parent="27" name="PREV_BATCH_ID">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="402" parent="27" name="CURRENT_RESULT_REMARKS">
+        <data-type>varchar(20)</data-type>
+      </column>
+      <key id="403" parent="27" name="PRIMARY">
+        <columns>SL_ID
+ROLL_NO</columns>
+        <primary>1</primary>
+      </key>
+      <column id="404" parent="28" name="SCHEME_ID">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="405" parent="28" name="SCHEME_PART">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="406" parent="28" name="AC_ID">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="407" parent="28" name="SL_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="408" parent="28" name="ROLL_NO">
+        <mandatory>1</mandatory>
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="409" parent="28" name="SEMESTER">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="410" parent="28" name="COURSE_NO">
+        <mandatory>1</mandatory>
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="411" parent="28" name="MARKS_OBTAINED">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="412" parent="28" name="GRADE">
+        <data-type>varchar(5)</data-type>
+      </column>
+      <column id="413" parent="28" name="REMARKS">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="414" parent="28" name="MIN_MARKS">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="415" parent="28" name="QP">
+        <data-type>decimal(5,2)</data-type>
+      </column>
+      <column id="416" parent="28" name="UNI_MARKS_OBTAINED">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="417" parent="28" name="COLLEGE_MARKS_OBTAINED">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="418" parent="28" name="REF_NO">
+        <data-type>varchar(25)</data-type>
+      </column>
+      <column id="419" parent="28" name="REF_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <key id="420" parent="28" name="PRIMARY">
+        <columns>SL_ID
+ROLL_NO
+SEMESTER
+COURSE_NO</columns>
+        <primary>1</primary>
+      </key>
+      <column id="421" parent="29" name="SL_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="422" parent="29" name="ROLL_NO">
+        <mandatory>1</mandatory>
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="423" parent="29" name="REMARKS">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <key id="424" parent="29" name="PRIMARY">
+        <columns>SL_ID
+ROLL_NO</columns>
+        <primary>1</primary>
+      </key>
+      <column id="425" parent="30" name="SEMESTER">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="426" parent="30" name="SL_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="427" parent="30" name="ROLL_NO">
+        <mandatory>1</mandatory>
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="428" parent="30" name="REMARKS">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <key id="429" parent="30" name="PRIMARY">
+        <columns>SL_ID
+ROLL_NO
+SEMESTER</columns>
+        <primary>1</primary>
+      </key>
+      <column id="430" parent="31" name="MINOR_ID">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="431" parent="31" name="AC_ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="432" parent="31" name="COURSE_NO">
+        <mandatory>1</mandatory>
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="433" parent="31" name="COURSE_TITLE">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="434" parent="31" name="TITLE">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="435" parent="31" name="CR_HRS">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="436" parent="31" name="MAX_MARKS">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="437" parent="31" name="SEMESTER">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="438" parent="31" name="REMARKS">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <key id="439" parent="31" name="PRIMARY">
+        <columns>AC_ID
+COURSE_NO</columns>
+        <primary>1</primary>
+      </key>
+      <column id="440" parent="32" name="MINOR_ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="441" parent="32" name="PART">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="442" parent="32" name="YEAR">
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="443" parent="32" name="DESCRIPTION">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="444" parent="32" name="REMARKS">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <key id="445" parent="32" name="PRIMARY">
+        <columns>MINOR_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="446" parent="33" name="PART">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="447" parent="33" name="BATCH_ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="448" parent="33" name="REMARKS">
+        <data-type>varchar(150)</data-type>
+      </column>
+      <column id="449" parent="33" name="YEAR">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <key id="450" parent="33" name="PRIMARY">
+        <columns>PART
+BATCH_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="451" parent="34" name="PROG_ID">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="452" parent="34" name="DEPT_ID">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="453" parent="34" name="PROGRAM_TITLE">
+        <mandatory>1</mandatory>
+        <data-type>varchar(150)</data-type>
+      </column>
+      <column id="454" parent="34" name="SEM_DURATION">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="455" parent="34" name="SEM_PER_PART">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="456" parent="34" name="REMARKS">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="457" parent="34" name="DEGREE_TITLE">
+        <data-type>varchar(150)</data-type>
+      </column>
+      <column id="458" parent="34" name="SUBJECT">
+        <data-type>varchar(150)</data-type>
+      </column>
+      <column id="459" parent="34" name="GRADUATE_POSTGRADUATE">
+        <data-type>varchar(1)</data-type>
+      </column>
+      <column id="460" parent="34" name="SEM_MONTH_DURATION">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <key id="461" parent="34" name="PRIMARY">
+        <columns>DEPT_ID
+PROG_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="462" parent="35" name="SCHEME_ID">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="463" parent="35" name="DEPT_ID">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="464" parent="35" name="PROG_ID">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="465" parent="35" name="YEAR">
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="466" parent="35" name="REMARKS">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="467" parent="35" name="MIN_MARKS">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="468" parent="35" name="GROUP_DESC">
+        <data-type>varchar(4)</data-type>
+      </column>
+      <key id="469" parent="35" name="PRIMARY">
+        <columns>SCHEME_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="470" parent="36" name="SCHEME_ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="471" parent="36" name="SCHEME_PART">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="472" parent="36" name="SEMESTER">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="473" parent="36" name="COURSE_NO">
+        <mandatory>1</mandatory>
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="474" parent="36" name="COURSE_TITLE">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="475" parent="36" name="CR_HRS">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="476" parent="36" name="MAX_MARKS">
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="477" parent="36" name="REMARKS">
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="478" parent="36" name="SUBJ_TYPE">
+        <data-type>varchar(1)</data-type>
+      </column>
+      <column id="479" parent="36" name="IS_CREDITABLE">
+        <data-type>varchar(5)</data-type>
+      </column>
+      <key id="480" parent="36" name="PRIMARY">
+        <columns>SCHEME_ID
+SCHEME_PART
+SEMESTER
+COURSE_NO
+COURSE_TITLE</columns>
+        <primary>1</primary>
+      </key>
+      <column id="481" parent="37" name="SCHEME_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="482" parent="37" name="SCHEME_PART">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="483" parent="37" name="REMARKS">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <key id="484" parent="37" name="PRIMARY">
+        <columns>SCHEME_ID
+SCHEME_PART</columns>
+        <primary>1</primary>
+      </key>
+      <column id="485" parent="38" name="SCHEME_ID">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="486" parent="38" name="SCHEME_PART">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="487" parent="38" name="SEMESTER">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="488" parent="38" name="REMARKS">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <key id="489" parent="38" name="PRIMARY">
+        <columns>SCHEME_ID
+SCHEME_PART
+SEMESTER</columns>
+        <primary>1</primary>
+      </key>
+      <column id="490" parent="39" name="SL_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="491" parent="39" name="PART">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="492" parent="39" name="BATCH_ID">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="493" parent="39" name="PREP_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="494" parent="39" name="YEAR">
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="495" parent="39" name="REMARKS">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="496" parent="39" name="PART_GROUP">
+        <data-type>varchar(1)</data-type>
+      </column>
+      <column id="497" parent="39" name="TYPE">
+        <data-type>varchar(1)</data-type>
+        <default-expression>&apos;R&apos;</default-expression>
+      </column>
+      <key id="498" parent="39" name="PRIMARY">
+        <columns>SL_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="499" parent="40" name="SL_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="500" parent="40" name="ROLL_NO">
+        <mandatory>1</mandatory>
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="501" parent="40" name="BATCH_ID">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="502" parent="40" name="PART">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="503" parent="40" name="REMARKS">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="504" parent="40" name="STATUS">
+        <data-type>varchar(1)</data-type>
+      </column>
+      <key id="505" parent="40" name="PRIMARY">
+        <columns>SL_ID
+ROLL_NO</columns>
+        <primary>1</primary>
+      </key>
+      <column id="506" parent="41" name="RUL_ID">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)</data-type>
+      </column>
+      <column id="507" parent="41" name="SUBJ_PASS_GRADE">
+        <data-type>varchar(1)</data-type>
+      </column>
+      <column id="508" parent="41" name="PASS_GPA">
+        <data-type>decimal(6,2)</data-type>
+      </column>
+      <column id="509" parent="41" name="PROMOTE_GPA">
+        <data-type>decimal(6,2)</data-type>
+      </column>
+      <column id="510" parent="41" name="YEAR">
+        <data-type>varchar(10)</data-type>
+      </column>
+      <key id="511" parent="41" name="PRIMARY">
+        <columns>RUL_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="512" parent="42" name="ROLL_NO">
+        <mandatory>1</mandatory>
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="513" parent="42" name="BATCH_ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="514" parent="42" name="PART">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="515" parent="42" name="REMARKS">
+        <data-type>varchar(150)</data-type>
+      </column>
+      <key id="516" parent="42" name="PRIMARY">
+        <columns>ROLL_NO
+BATCH_ID
+PART</columns>
+        <primary>1</primary>
+      </key>
+      <column id="517" parent="43" name="BATCH_ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="518" parent="43" name="ROLL_NO">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="519" parent="43" name="TAG_NO">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="520" parent="43" name="NAME">
+        <data-type>varchar(70)</data-type>
+      </column>
+      <column id="521" parent="43" name="FNAME">
+        <mandatory>1</mandatory>
+        <data-type>varchar(70)</data-type>
+      </column>
+      <column id="522" parent="43" name="SURNAME">
+        <data-type>varchar(70)</data-type>
+      </column>
+      <column id="523" parent="43" name="GENDER">
+        <mandatory>1</mandatory>
+        <data-type>varchar(5)</data-type>
+      </column>
+      <column id="524" parent="43" name="CELL">
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="525" parent="43" name="PHONE">
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="526" parent="43" name="HOME_ADDRESS">
+        <data-type>varchar(150)</data-type>
+      </column>
+      <column id="527" parent="43" name="PERMANENT_ADDRESS">
+        <data-type>varchar(150)</data-type>
+      </column>
+      <column id="528" parent="43" name="REMARKS">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="529" parent="43" name="REF_NO">
+        <data-type>varchar(25)</data-type>
+      </column>
+      <column id="530" parent="43" name="REF_DATE">
+        <data-type>datetime(6)</data-type>
+      </column>
+      <column id="531" parent="43" name="NIC">
+        <data-type>varchar(25)</data-type>
+      </column>
+      <column id="532" parent="43" name="DISTRICT">
+        <data-type>varchar(35)</data-type>
+      </column>
+      <column id="533" parent="43" name="U_R">
+        <data-type>varchar(1)</data-type>
+      </column>
+      <column id="534" parent="43" name="CANDIDATE_ID">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="535" parent="43" name="NATIONALITY">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="536" parent="43" name="EMAIL">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <key id="537" parent="43" name="PRIMARY">
+        <columns>ROLL_NO
+BATCH_ID</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+  <data-source name="MySQL - @localhost" uuid="c61ace45-4c72-4e1c-becc-8c81bff7e0dc">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="MySQL - @localhost [3]" uuid="267ea131-5ffc-4d4e-a5b2-4a5de7bd833c">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>

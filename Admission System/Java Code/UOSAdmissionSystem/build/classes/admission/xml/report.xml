@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<reports>
+    <report category="Candidate" 
+        name="Bonafide Certificate"
+        jasper-file="bonafide-certificate.jrxml"
+        filter-class="admission.reports.filters.BonafideCertificateFilter"
+        security-context="BONAFIDE_CERTIFICATE_REPORT"
+        description="Bonafide Certificate">
+    </report>
+    <report category="Candidate"
+        name="ID Card"
+        jasper-file="id_card_report.jrxml"
+        filter-class="admission.reports.filters.IdCardFilter"
+        security-context="ID_CARD_REPORT"
+        description="Enrolled students identity card">
+    </report>
+    <report category="Candidate"
+        name="Candidate Detail Checker Report"
+        jasper-file="candidate_checker_report.jrxml"
+        filter-class="admission.reports.filters.CandidateDetailCheckerFilter"
+        security-context="CANDIDATE_DETAIL_CHECKER_REPORT"
+        description="Candidate Detail Checker Report">
+    </report>
+    <report category="User"
+        name="User Admission Form Audit Report"
+        jasper-file="user_admission_form_audit_report.jrxml"
+        filter-class="admission.reports.filters.UserAdmissionFormAuditReportFilter"
+        security-context="USER_ADMISSION_FORM_AUDIT_REPORT"
+        description="User Admission Form Audit Report">
+    </report>
+    <report category="Selection"
+        name="Master Selection List Report"
+        jasper-file="master_selection_list_report.jrxml"
+        filter-class="admission.reports.filters.MasterSelectionListFilter"
+        security-context="MASTER_SELECTION_LIST_REPORT"
+        description="Master Selection List Report">
+    </report>
+    <report category="Selection"
+        name="Bachelor Selection List Report"
+        jasper-file="bachelor_selection_list_report.jrxml"
+        filter-class="admission.reports.filters.BachelorSelectionListFilter"
+        security-context="BACHELOR_SELECTION_LIST_REPORT"
+        description="Bachelor Selection List Report">
+    </report>
+    <report category="Selection"
+        name="List Wise Challan Report"
+        jasper-file="list_wise_challan_report.jrxml"
+        filter-class="admission.reports.filters.ListWiseChallanFilter"
+        security-context="LIST_WISE_CHALLAN_REPORT"
+        description="List Wise Challan Report">
+    </report>
+    <report category="Selection"
+        name="Consumed Seats Report"
+        jasper-file="consumed_seats_list_report.jrxml"
+        filter-class="admission.reports.filters.ConsumedSeatsFilter"
+        security-context="CONSUMED_SEATS_REPORT"
+        description="Consumed Seats Report">
+    </report>
+    <report category="Part Registry"
+        name="Part Registry"
+        jasper-file="part_registry_report.jrxml"
+        filter-class="admission.reports.filters.PartRegistryFilter"
+        security-context="PART_REGISTRY_REPORT"
+        description="Challan paid for part registry">
+    </report>
+</reports>

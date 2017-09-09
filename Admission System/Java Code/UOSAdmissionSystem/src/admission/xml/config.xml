@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <!--Reports-->
+    <resource category="Report"
+        code="BONAFIDE_CERTIFICATE_REPORT"
+        name="Bonafide Certificate Report" >
+    </resource>
+    <resource category="Report"
+        code="ID_CARD_REPORT"
+        name="ID Card Report" >
+    </resource>
+    <resource category="Report"
+        code="CANDIDATE_DETAIL_CHECKER_REPORT"
+        name="Candidate Detail Checker Report" >
+    </resource>
+    <resource category="Report"
+        code="USER_ADMISSION_FORM_AUDIT_REPORT"
+        name="User Admission Form Audit Report" >
+    </resource>
+    <resource category="Report"
+        code="MASTER_SELECTION_LIST_REPORT"
+        name="Master Selection List Report" >
+    </resource>
+    <resource category="Report"
+        code="BACHELOR_SELECTION_LIST_REPORT"
+        name="Bachelor Selection List Report" >
+    </resource>
+    <resource category="Report"
+        code="LIST_WISE_CHALLAN_REPORT"
+        name="List Wise Challan Report" >
+    </resource>
+    <resource category="Report"
+        code="PART_REGISTRY_REPORT"
+        name="Part Registry" >
+    </resource>
+    <resource category="Report"
+        code="CONSUMED_SEATS_REPORT"
+        name="Consumed Seats" >
+    </resource>
+    
+    <!--Forms-->
+    <resource category="Form"
+        code="ADMISSION_FORM"
+        name="Candidate Admission Form" >
+    </resource>
+    <resource category="Form"
+        code="USER_MANAGMENT_FORM"
+        name="User Managment Form" >
+    </resource>
+    <resource category="Form"
+        code="ADMISSION_SESSION_FORM"
+        name="Admission Session Form">
+    </resource>
+    <resource category="Form"
+        code="ADMISSION_DETAIL_FORM"
+        name="Admission Detail Form">
+    </resource>
+    <resource category="Form"
+        code="BOOKLET_ADMISSION_FORM"
+        name="Booklet Admission Form">
+    </resource>
+    <resource category="Form"
+        code="SAVE_ADMISSION_FORM"
+        name="Save Admission Form">
+    </resource>
+    <resource category="Form"
+        code="DELETE_ADMISSION_FORM"
+        name="Delete Admission Form">
+    </resource>
+    <resource category="Form"
+        code="CAMPUS_FORM"
+        name="Campus Form">
+    </resource>
+    <resource category="Form"
+        code="CATEGORY_FORM"
+        name="Category Form">
+    </resource>
+    <resource category="Form"
+        code="CATEGORY_TYPE_FORM"
+        name="Category Type Form">
+    </resource>
+    <resource category="Form"
+        code="COUNTRY_FORM"
+        name="Country Form">
+    </resource>
+    <resource category="Form"
+        code="CREDENTIAL_FORM"
+        name="Credential Form">
+    </resource>
+    <resource category="Form"
+        code="DEPARTMENT_FORM"
+        name="Department Form">
+    </resource>
+    <resource category="Form"
+        code="DEPARTMENT_TYPE_FORM"
+        name="Department Type Form">
+    </resource>
+    <resource category="Form"
+        code="DISCIPLINE_FORM"
+        name="Discipline Form">
+    </resource>
+    <resource category="Form"
+        code="DISTRICT_FORM"
+        name="District Form">
+    </resource>
+    <resource category="Form"
+        code="DIVISION_FORM"
+        name="Division Form">
+    </resource>
+    <resource category="Form"
+        code="FACULTY_FORM"
+        name="Faculty Form">
+    </resource>
+    <resource category="Form"
+        code="GROUP_FORM"
+        name="Group Form">
+    </resource>
+    <resource category="Form"
+        code="ISSUER_FORM"
+        name="Issuer Form">
+    </resource>
+    <resource category="Form"
+        code="ISSUER_TYPE_FORM"
+        name="Issuer Type Form">
+    </resource>
+    <resource category="Form"
+        code="JURISDICTION_FORM"
+        name="Jurisdiction Form">
+    </resource>
+    <resource category="Form"
+        code="PRIVILEGES_FORM"
+        name="Privileges Form">
+    </resource>
+    <resource category="Form"
+        code="PROGRAM_FORM"
+        name="Program Form">
+    </resource>
+    <resource category="Form"
+        code="PROGRAM_OF_STUDY_FORM"
+        name="Program Of Study Form">
+    </resource>
+    <resource category="Form"
+        code="PROGRAM_OF_STUDY_FOR_PROGRAM_FORM"
+        name="Program Of Study for Program Form">
+    </resource>
+    <resource category="Form"
+        code="PROGRAM_TYPE_FORM"
+        name="Program Type Form">
+    </resource>
+    <resource category="Form"
+        code="RELIGION_FORM"
+        name="Religion Form">
+    </resource>
+    <resource category="Form"
+        code="DISCIPLINE_SEAT_DISTRIBUTION_FORM"
+        name="Discipline Seat Distribution Form">
+    </resource>
+    <resource category="Form"
+        code="TALUKA_FORM"
+        name="Taluka Form">
+    </resource>
+    <resource category="Form"
+        code="TEST_FORM"
+        name="Test Form">
+    </resource>
+    <resource category="Form"
+        code="ACCOUNT_FORM"
+        name="Account Form">
+    </resource>
+    <resource category="Form"
+        code="PART_FORM"
+        name="Part Form">
+    </resource>
+    <resource category="Form"
+        code="ADMISSION_LIST_FORM"
+        name="Admission List Form">
+    </resource>
+    <resource category="Form"
+        code="ADMISSION_YEAR_FORM"
+        name="Admission Year Form">
+    </resource>
+    <resource category="Form"
+        code="CAMPUS_POS_FORM"
+        name="Campus Pos Form">
+    </resource>
+    <resource category="Form"
+        code="CAMPUS_POSG_FORM"
+        name="Campus Posg Form">
+    </resource>
+    <resource category="Form"
+        code="CAMPUS_CATEGORY_FORM"
+        name="Campus Category Form">
+    </resource>
+    <resource category="Form"
+        code="SESSION_FORM"
+        name="Session Form">
+    </resource>
+    <resource category="Form"
+        code="JURISDICTION_SEAT_DISTRIBUTION_FORM"
+        name="Jurisdiction Seat Distribution Form">
+    </resource>
+    <resource category="Form"
+        code="PROVINCE_FORM"
+        name="Province Form">
+    </resource>
+    <resource category="Form"
+        code="TEST_SCORE_FORM"
+        name="Test Score Form">
+    </resource>
+    <resource category="Form"
+        code="OTHER_TEST_SCORE_FORM"
+        name="Other Test Score Form">
+    </resource>
+    <resource category="Form"
+        code="ALL_REPORTS_FORM"
+        name="All Reports Form">
+    </resource>
+    <resource category="Form"
+        code="SUBJECT_FORM"
+        name="Subject Form">
+    </resource>
+    <resource category="Form"
+        code="PROGRAM_SUBJECT_FORM"
+        name="Program Subject Form">
+    </resource>
+    <resource category="Form"
+        code="PREREQUISITE_FORM"
+        name="Prerequisite Form">
+    </resource>
+    <resource category="Form"
+        code="EXPORT_CANDIDATE_FORM"
+        name="Export Candidate Form">
+    </resource>
+    <resource category="Form"
+        code="BANK_SELECTION_REPORT_FORM"
+        name="Bank Selection Report Form">
+    </resource>
+    <resource category="Form"
+        code="IMAGE_LOADER_FORM"
+        name="Image Loader Form">
+    </resource>
+    <resource category="Form"
+        code="CPOSG_FORM"
+        name="Cposg Form">
+    </resource>
+    <resource category="Form"
+        code="ROLL_NO_GENERATOR_FORM"
+        name="Roll No Generator Form">
+    </resource>
+    <resource category="Form"
+        code="HEC_REPORT_FORM"
+        name="Hec Report Form">
+    </resource>
+    <resource category="Form"
+        code="HOTEL_REPORT_FORM"
+        name="Hotel Report Form">
+    </resource>
+    <resource category="Form"
+        code="FINANCE_REPORT_FORM"
+        name="Finance Report Form">
+    </resource>
+    <resource category="Form"
+        code="SEARCH_ENGINE_FORM"
+        name="Search Engine Form">
+    </resource>
+    <resource category="Form"
+        code="CONFIGURATION_FORM"
+        name="Configuration Form">
+    </resource>    
+    <resource category="Form"
+        code="SHIFT_FORM"
+        name="Shift Form">
+    </resource>
+    <resource category="Form"
+        code="FEE_CATEGORY_FORM"
+        name="Fee Category Form">
+    </resource>
+    <resource category="Form"
+        code="FEE_MODEL_FORM"
+        name="Fee Model Form">
+    </resource>
+    <resource category="Form"
+        code="MODEL_MAPPING_FORM"
+        name="Model Mapping Form">
+    </resource>
+    <resource category="Form"
+        code="CLASS_FEE_FORM"
+        name="Class Fee Form">
+    </resource>
+    <resource category="Form"
+        code="ADDITIONAL_FEE_FORM"
+        name="Additional Fee Form">
+    </resource>
+    <resource category="Form"
+        code="CHALLAN_GENERATOR_DIALOG"
+        name="Challan Generator Dialog">
+    </resource>
+    <resource category="Form"
+        code="CHALLAN_ENTRY_DIALOG"
+        name="Challan Entry Dialog">
+    </resource>
+    
+    <!--Action-->
+    <resource category="Action"
+        code="SAVE_ADMISSION_FORM"
+        name="Save Admission Form">
+    </resource>
+    <resource category="Action"
+        code="DELETE_ADMISSION_FORM"
+        name="Delete Admission Form">
+    </resource>
+    <resource category="Action"
+        code="UPDATE_ADMISSION_FORM"
+        name="Update Admission Form">
+    </resource>
+    <resource category="Action"
+        code="VIEW_ADMISSION_FORM"
+        name="View Admission Form">
+    </resource>
+    <resource category="Action"
+        code="BOOKLET_ADMISSION_FORM"
+        name="Booklet Admission Form">
+    </resource>
+    <resource category="Action"
+        code="ACTIVE_ADMISSION_SELECTION"
+        name="Active Admission Selection">
+    </resource>
+</config>
